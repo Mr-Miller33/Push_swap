@@ -4,7 +4,9 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
 SRCS = src/stack/stack_lst.c \
+		src/operations/op.c \
 		src/main.c
+		
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)

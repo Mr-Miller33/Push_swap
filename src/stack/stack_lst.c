@@ -2,17 +2,6 @@
 #include <stdlib.h>
 #include "push_swap.h"
 
-typedef struct s_node
-{
-	int value;
-	struct s_node *next;
-}	t_node;
-
-typedef struct s_stack
-{
-	t_node *top;
-	int size;
-}	t_stack;
 
 t_stack *create_stack()
 {
@@ -108,16 +97,26 @@ void print_stack(t_stack *st)
 	printf("NULL");
 	
 }
+
 int main()
 {
-	t_stack *stack;
+	t_stack *a;
+	t_stack *b;
 
-	stack = create_stack();
-	//add_back(stack, create_node(1));
-	//add_back(stack, create_node(2));
-	//add_back(stack, create_node(3));
-	//add_back(stack, create_node(4));
-	//add_back(stack, create_node(5));
-	print_stack(stack);
+	a = create_stack();
+	b = create_stack();
+	add_back(a, create_node(1));
+	add_back(a, create_node(2));
+	add_back(a, create_node(3));
+	
+	add_back(b, create_node(5));
+	add_back(b, create_node(6));
+	add_back(b, create_node(7));
+	
+	ss(a,b);
+
+	print_stack(a);
+	printf("\n");
+	print_stack(b);
 }
 

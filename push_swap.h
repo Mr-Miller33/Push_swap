@@ -21,6 +21,10 @@ void add_back(t_stack *stack, t_node *new_node);
 void free_stack(t_stack *stack);
 void print_stack(t_stack *st);
 
+//operations
+void swap(t_stack *a);
+void ss(t_stack *a, t_stack *b);
+
 
 #endif
 
