@@ -24,6 +24,8 @@ void print_stack(t_stack *st);
 //operations
 void swap(t_stack *a);
 void ss(t_stack *a, t_stack *b);
+void pa(t_stack *a, t_stack *b);
+void pb(t_stack *a, t_stack *b);
 
 
 #endif

@@ -114,6 +114,9 @@ int main()
 	add_back(b, create_node(7));
 	
 	ss(a,b);
+	pb(a,b);
+	pb(a,b);
+	pb(a,b);
 
 	print_stack(a);
 	printf("\n");
