@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include "push_swap.h"
 
 
@@ -97,6 +96,44 @@ void print_stack(t_stack *st)
 	printf("NULL");
 	
 }
+t_node *stack_last(t_stack *stack)
+{
+	t_node *tmp;
+
+	if (!stack)
+	{
+		return NULL;
+	}
+	if (stack->size == 0)
+	{	
+		return NULL;
+	}
+	tmp = stack->top;
+	while (tmp->next)
+	{
+		tmp = tmp->next;
+	}
+	return tmp;
+}
+t_node *bfr_last(t_stack *stack)
+{
+	t_node *tmp;
+
+	if (!stack)
+	{
+		return NULL;
+	}
+	if (stack->size < 2)
+	{	
+		return NULL;
+	}
+	tmp = stack->top;
+	while (tmp->next->next)
+	{
+		tmp = tmp->next;
+	}
+	return tmp;
+}
 
 int main()
 {
@@ -113,10 +150,7 @@ int main()
 	add_back(b, create_node(6));
 	add_back(b, create_node(7));
 	
-	ss(a,b);
-	pb(a,b);
-	pb(a,b);
-	pb(a,b);
+	
 
 	print_stack(a);
 	printf("\n");
