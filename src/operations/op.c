@@ -36,22 +36,30 @@ void sb(t_stack *b)
 }
 void ss(t_stack *a, t_stack *b)
 {
-	swap(a);
-	swap(b);
+	sa(a);
+	sb(b);
 }
 void pa(t_stack *a, t_stack *b)
 {
 	t_node *tmp;
+
+	if (!a || !b || (b->size == 0))
+		return ;
 	tmp = b->top;
 	b->top = b->top->next;
 	add_front(a,tmp);
+	b->size--;
 }
 void pb(t_stack *a, t_stack *b)
 {
 	t_node *tmp;
+
+	if (!a || !b || (a->size == 0))
+		return ;
 	tmp = a->top;
 	a->top = a->top->next;
 	add_front(b,tmp);
+	a->size--;
 }
 void ra(t_stack *a)
 {

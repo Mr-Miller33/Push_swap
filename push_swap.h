@@ -38,6 +38,12 @@ void rra(t_stack *a);
 void rrb(t_stack *b);
 void rrr(t_stack *a, t_stack *b);
 
+//parsing
+t_stack *parse_to_stack(int argc, char **argv);
+
+//helpers
+int	ft_atoi(const char *nptr);
+
 
 #endif
 

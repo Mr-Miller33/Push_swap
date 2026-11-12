@@ -77,6 +77,45 @@ void	free_stack(t_stack *stack)
 	}
 	free(init_stack);
 }
+t_node *stack_last(t_stack *stack)
+{
+	t_node *tmp;
+	
+	if (!stack)
+	{
+		return NULL;
+	}
+	if (stack->size == 0)
+	{	
+		return NULL;
+	}
+	tmp = stack->top;
+	while (tmp->next)
+	{
+		tmp = tmp->next;
+	}
+	return tmp;
+}
+t_node *bfr_last(t_stack *stack)
+{
+	t_node *tmp;
+	
+	if (!stack)
+	{
+		return NULL;
+	}
+	if (stack->size < 2)
+	{	
+		return NULL;
+	}
+	tmp = stack->top;
+	while (tmp->next->next)
+	{
+		tmp = tmp->next;
+	}
+	return tmp;
+}
+
 void print_stack(t_stack *st)
 {
 	t_node *tmp;
@@ -96,64 +135,22 @@ void print_stack(t_stack *st)
 	printf("NULL");
 	
 }
-t_node *stack_last(t_stack *stack)
-{
-	t_node *tmp;
-
-	if (!stack)
-	{
-		return NULL;
-	}
-	if (stack->size == 0)
-	{	
-		return NULL;
-	}
-	tmp = stack->top;
-	while (tmp->next)
-	{
-		tmp = tmp->next;
-	}
-	return tmp;
-}
-t_node *bfr_last(t_stack *stack)
-{
-	t_node *tmp;
-
-	if (!stack)
-	{
-		return NULL;
-	}
-	if (stack->size < 2)
-	{	
-		return NULL;
-	}
-	tmp = stack->top;
-	while (tmp->next->next)
-	{
-		tmp = tmp->next;
-	}
-	return tmp;
-}
-
-int main()
-{
-	t_stack *a;
-	t_stack *b;
-
-	a = create_stack();
-	b = create_stack();
-	add_back(a, create_node(1));
-	add_back(a, create_node(2));
-	add_back(a, create_node(3));
+//int main()
+//{
+//	t_stack *a;
+//	t_stack *b;
 	
-	add_back(b, create_node(5));
-	add_back(b, create_node(6));
-	add_back(b, create_node(7));
+//	a = create_stack();
+//	b = create_stack();
+//	add_back(a, create_node(5));
+//	add_back(a, create_node(8));
 	
 	
-
-	print_stack(a);
-	printf("\n");
-	print_stack(b);
-}
+	
+//	pb(a,b);
+//	pa(a,b);
+//	print_stack(a);
+//	printf("\n\n");
+//	print_stack(b);
+//}
 
