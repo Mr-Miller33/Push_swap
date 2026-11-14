@@ -44,6 +44,9 @@ t_stack *parse_to_stack(int argc, char **argv);
 //helpers
 int	ft_atoi(const char *nptr);
 
+//disorder
+float disorder(t_stack *stack);
+
 
 #endif
 
