@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib.h                                              :+:      :+:    :+:   */
+/*   ft_print_uns_digit.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moslaoui <moslaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/03 13:31:23 by moslaoui          #+#    #+#             */
-/*   Updated: 2026/11/03 13:41:59 by moslaoui         ###   ########.fr       */
+/*   Created: 2026/11/10 16:47:27 by moslaoui          #+#    #+#             */
+/*   Updated: 2026/11/14 10:28:32 by moslaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB_H
-# define LIB_H
+#include "push_swap.h"
 
-#include <unsidt.h>
-#include <stdbool.h>
-#include <stdio.h>
+int	ft_print_uns_digit(unsigned int nb)
+{
+	int				count;
+	unsigned int	div;
 
-void    ft_putstr(char *str);
-void    ft_putnbr(int nb);
-
-#endif
+	count = 0;
+	div = 1;
+	while (nb / div >= 10)
+		div *= 10;
+	while (div > 0)
+	{
+		if (ft_print_char((nb / div) % 10 + '0') == -1)
+			return (-1);
+		div /= 10;
+		count += 1;
+	}
+	return (count);
+}

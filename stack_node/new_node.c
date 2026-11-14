@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   new_node.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moslaoui <moslaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/03 13:31:13 by moslaoui          #+#    #+#             */
-/*   Updated: 2026/11/03 13:41:33 by moslaoui         ###   ########.fr       */
+/*   Created: 2026/11/13 11:29:26 by moslaoui          #+#    #+#             */
+/*   Updated: 2026/11/14 14:29:06 by moslaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib.h"
+#include "push_swap.h"
 
-void    ft_putnbr(int nb)
+t_node	*new_node(int content)
 {
-    long    n;
-    char    c;
-    
-    n = nb;
-    if (n < 0)
-    {
-        n= -n;
-        write (1, "-", 1);
-    }
-    if (n >= 10)
-        ft_putnbr(n / 10);
-    c = (n % 10) + '0';
-    write (1, &c, 1);
+	t_node	*new;
+
+	new = malloc(sizeof(t_node));
+	if (!new)
+		return (NULL);
+	new->content = content;
+	new->next = NULL;
+	return (new);
 }
