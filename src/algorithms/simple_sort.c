@@ -3,13 +3,20 @@
 //under tesing
 void selection_sort(t_stack *a)
 {
+	int pos;
+	int min_pos;
 	t_stack *b;
 	t_node *tmp_node;
 	t_node *min_node;
 	
+	if (!a || (disorder(a) == 0))
+		return ;
 	b = create_stack();
+	if (!b)
+		return ;
 	while (a->size != 0)
 	{
+		pos = 0;
 		min_node = a->top;
 		tmp_node = a->top;
 		while (tmp_node)
@@ -17,13 +24,17 @@ void selection_sort(t_stack *a)
 			if (tmp_node->value < min_node->value)
 			{
 				min_node = tmp_node;
+				min_pos = pos;
 			}
 			tmp_node = tmp_node->next;
+			pos++;
 		}
-		tmp_node = a->top;
 		while(a->top->value != min_node->value)
 		{
-			ra(a);
+			if (min_pos > (a->size / 2))
+				rra(a);
+			else
+				ra(a);
 		}
 		pb(a, b);
 	}
@@ -31,4 +42,5 @@ void selection_sort(t_stack *a)
 	{
 		pa(a, b);
 	}
+	free_stack(b);
 }
