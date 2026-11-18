@@ -1,5 +1,26 @@
 #include "push_swap.h"
 
+int is_sorted(t_stack *stack)
+{
+	int i;
+	int j;
+	t_node *tmp;
+
+	if (stack->size < 2)
+	{
+		return 1;
+	}
+	tmp = stack->top;
+	while (tmp->next)
+	{
+		if (tmp->value > tmp->next->value)
+		{
+			return 0;
+		}
+		tmp = tmp->next;
+	}
+	return 1;
+}
 //under tesing
 void selection_sort(t_stack *a)
 {
@@ -9,7 +30,7 @@ void selection_sort(t_stack *a)
 	t_node *tmp_node;
 	t_node *min_node;
 	
-	if (!a || (disorder(a) == 0))
+	if (!a || (is_sorted(a) == 1))
 		return ;
 	b = create_stack();
 	if (!b)
