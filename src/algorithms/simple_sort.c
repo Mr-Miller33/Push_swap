@@ -1,11 +1,8 @@
 #include "push_swap.h"
 
+//under tesing
 void selection_sort(t_stack *a)
 {
-	//int size;
-	//int min_index;
-	//int i;
-	//int j;
 	t_stack *b;
 	t_node *tmp_node;
 	t_node *min_node;
@@ -34,5 +31,4 @@ void selection_sort(t_stack *a)
 	{
 		pa(a, b);
 	}
-	
 }
