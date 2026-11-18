@@ -12,17 +12,18 @@
 
 #include "push_swap.h"
 
-void	swap(t_stack *stack)
+int	sa(t_stack *A)
 {
 	int	tmp;
 	int	node1_content;
 	int	node2_content;
 	
-	if (!stack || !stack->top || !stack->top->next)
+	if (!A || !A->top || !A->top->next)
 		return ;
-	node1_content = stack->top->content;
-	node2_content = stack->top->next->content;
+	node1_content = A->top->content;
+	node2_content = A->top->next->content;
 	tmp = node1_content;
 	node1_content = node2_content;
 	node2_content = tmp;
+	return (S_A);
 }

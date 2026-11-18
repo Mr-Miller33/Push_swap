@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotation.c                                         :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moslaoui <moslaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/13 16:05:52 by moslaoui          #+#    #+#             */
-/*   Updated: 2026/11/13 17:34:33 by moslaoui         ###   ########.fr       */
+/*   Created: 2026/11/13 10:45:04 by moslaoui          #+#    #+#             */
+/*   Updated: 2026/11/14 15:10:23 by moslaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotation(t_stack *stack)
+int	pb(t_stack *B, t_stack *A)
 {
-	t_node	*node;
-	int	node1_content;
+	t_node *first_node;
 	
-	if (!stack || !stack->top || !stack->top->next)
+	if (!B || !A || !A->top)
 		return ;
-	node1_content = stack->top->content;
-	node = stack->top;
-	while (node->next)
-	{
-		node->content = node->next->content;
-		node = node->next;
-	}
-	node->content = node1_content;
+	first_node = A->top;
+	A->top = first_node->next;
+	A->size--;
+	add_node_front(B, first_node);
+	return (P_B);
 }

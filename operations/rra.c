@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   rev_rotation.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moslaoui <moslaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/13 10:45:04 by moslaoui          #+#    #+#             */
-/*   Updated: 2026/11/14 15:10:23 by moslaoui         ###   ########.fr       */
+/*   Created: 2026/11/13 17:35:55 by moslaoui          #+#    #+#             */
+/*   Updated: 2026/11/14 10:37:20 by moslaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push(t_stack *dst, t_stack *src)
+int	rra(t_stack *A)
 {
-	t_node *first_node;
-	
-	if (!dst || !src || !src->top)
+	t_node	*node;
+	int		node_content;
+	int		tmp;
+
+	if (!A || !A->top || !A->top->next)
 		return ;
-	first_node = src->top;
-	src->top = first_node->next;
-	src->size--;
-	add_node_front(dst, first_node);
+	node_content = A->top->content;
+	node = A->top->next;
+	while (node->next)
+	{
+		tmp = node->content;
+		node->content = node_content;
+		node_content = tmp;
+		node = node->next;
+	}
+	A->top->content = node_content;
+	return (RR_A);
 }

@@ -21,6 +21,7 @@
 typedef struct s_node
 {
     int				content;
+	size_t				index;
     struct s_node	*next;
 }   t_node;
 
