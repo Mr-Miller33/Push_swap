@@ -23,6 +23,7 @@ t_node	*create_node(int val)
 	if (!node)
 		return (NULL);
 	node->value = val;
+	node->index = 0;
 	node->next = NULL;
 	return (node);
 }

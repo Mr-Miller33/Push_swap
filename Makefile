@@ -8,6 +8,7 @@ SRCS = src/stack/stack_lst.c \
 		src/parsing/parse_args.c \
 		src/helpers.c \
 		src/disorder.c \
+		src/algorithms/simple_sort.c \
 		src/main.c
 		
 OBJS = $(SRCS:.c=.o)

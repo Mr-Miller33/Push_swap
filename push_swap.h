@@ -5,6 +5,7 @@
 typedef struct s_node
 {
 	int value;
+	int index;
 	struct s_node *next;
 }	t_node;
 
@@ -46,6 +47,9 @@ int	ft_atoi(const char *nptr);
 
 //disorder
 float disorder(t_stack *stack);
+
+//algorithms
+void selection_sort(t_stack *stack);
 
 
 #endif

@@ -6,7 +6,8 @@ int main(int argc, char **argv)
 	t_stack *stack;
 
 	stack = parse_to_stack(argc,argv);
+	selection_sort(stack);
 	print_stack(stack);
-	printf("\ndisorder : %.2f",disorder(stack));
+	printf("\ndisorder : %.2f",disorder(stack)); //hhhhhhhh
 
 }
