@@ -46,6 +46,9 @@ int has_duplicate(t_stack *stack,int value);
 
 //helpers
 int	ft_atoi(const char *nptr);
+char	**ft_split(char const *s, char sep);
+char	**ft_free(char **p, size_t i);
+size_t	ft_count_words(char const *s, char sep);
 
 //disorder
 float disorder(t_stack *stack);

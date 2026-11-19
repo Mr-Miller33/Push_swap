@@ -4,7 +4,11 @@
 t_stack *parse_to_stack(int argc, char **argv)
 {
 	t_stack *stack;
+	t_node *node;
+	char **p;
+	int count_wrds;
 	int i;
+	int j;
 	int val;
 
 	i = 1;
@@ -13,15 +17,38 @@ t_stack *parse_to_stack(int argc, char **argv)
 		return NULL;
 	while (i < argc)
 	{
-		if (append_number(stack, argv[i], &val))
-		{
-			add_back(stack, create_node(val));
-		}
-		else
-		{
+		count_wrds = ft_count_words(argv[i],' ');
+		p = ft_split(argv[i], ' ');
+		if (!p)
+		{	
 			free_stack(stack);
 			return NULL;
 		}
+		
+		j = 0;
+		while (p[j])
+		{	
+			if (append_number(stack, p[j], &val))
+			{
+				node = create_node(val);
+				if (!node)
+				{
+					free_stack(stack);
+					ft_free(p,count_wrds);
+					return NULL;
+				}
+				else
+    			add_back(stack, node);
+			}
+			else
+			{
+				free_stack(stack);
+				ft_free(p,count_wrds);
+				return NULL;
+			}
+			j++;
+		}
+		ft_free(p,count_wrds);
 		i++;
 	}
 	return stack;
