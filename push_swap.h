@@ -2,6 +2,8 @@
 #define PUSH_SWAP_H
 
 #include <stdlib.h>
+#include <limits.h>
+
 typedef struct s_node
 {
 	int value;
@@ -45,7 +47,7 @@ int parse_integer(char *arg, int *value);
 int has_duplicate(t_stack *stack,int value);
 
 //helpers
-int	ft_atoi(const char *nptr);
+long long	ft_atoi(const char *nptr);
 char	**ft_split(char const *s, char sep);
 char	**ft_free(char **p, size_t i);
 size_t	ft_count_words(char const *s, char sep);

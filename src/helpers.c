@@ -1,8 +1,9 @@
 #include "push_swap.h"
 
-int	ft_atoi(const char *nptr)
+
+long long	ft_atoi(const char *nptr)
 {
-	long	result;
+	long long	result;
 	int		i;
 	int		signe;
 
@@ -22,7 +23,7 @@ int	ft_atoi(const char *nptr)
 		result = (result * 10) + (nptr[i] - '0');
 		i++;
 	}
-	return ((int)(result * signe));
+	return (result * signe);
 }
 
 size_t	ft_count_words(char const *s, char sep)
