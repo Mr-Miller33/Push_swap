@@ -2,8 +2,6 @@
 
 int is_sorted(t_stack *stack)
 {
-	int i;
-	int j;
 	t_node *tmp;
 
 	if (stack->size < 2)

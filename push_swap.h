@@ -40,6 +40,9 @@ void rrr(t_stack *a, t_stack *b);
 
 //parsing
 t_stack *parse_to_stack(int argc, char **argv);
+int append_number(t_stack *stack, char *arg, int *value);
+int parse_integer(char *arg, int *value);
+int has_duplicate(t_stack *stack,int value);
 
 //helpers
 int	ft_atoi(const char *nptr);
