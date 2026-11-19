@@ -4,9 +4,6 @@
 t_stack *parse_to_stack(int argc, char **argv)
 {
 	t_stack *stack;
-	t_node *node;
-	char **p;
-	int count_wrds;
 	int i;
 	int j;
 	int val;
@@ -31,46 +28,59 @@ t_stack *parse_to_stack(int argc, char **argv)
 			}
 			j++;
 		}
-		if (len == j)
+		if (len == j || !parse_argument(argv[i], stack, &val)) 
 		{
 			free_stack(stack);
 			return NULL;
 		}
-		count_wrds = ft_count_words(argv[i], ' ');
-		p = ft_split(argv[i], ' ');
-		if (!p)
-		{
-			free_stack(stack);
-			return NULL;
-		}
-
-		j = 0;
-		while (p[j])
-		{
-			if (append_number(stack, p[j], &val))
-			{
-				node = create_node(val);
-				if (!node)
-				{
-					free_stack(stack);
-					ft_free(p, count_wrds);
-					return NULL;
-				}
-				else
-					add_back(stack, node);
-			}
-			else
-			{
-				free_stack(stack);
-				ft_free(p, count_wrds);
-				return NULL;
-			}
-			j++;
-		}
-		ft_free(p, count_wrds);
 		i++;
 	}
 	return stack;
+}
+int parse_argument(char *arg, t_stack *stack, int *val)
+{
+	int j;
+	char **p;
+	int count_wrds;
+
+	count_wrds = ft_count_words(arg, ' ');
+	p = ft_split(arg, ' ');
+	if (!p)
+	{
+		return 0;
+	}
+	j = 0;
+	while (p[j])
+	{
+		if (!parse_tokens(p[j], stack, val))
+		{
+			ft_free(p, count_wrds);
+			return 0;
+		}
+		j++;
+	}
+	ft_free(p, count_wrds);
+	return (1);
+}
+int parse_tokens(char *p, t_stack *stack, int *val)
+{
+	t_node *node;
+
+	if (append_number(stack, p, val))
+	{
+		node = create_node(*val);
+		if (!node)
+		{
+			return 0;
+		}
+		else
+		{
+			add_back(stack, node);
+			return 1;
+			
+		}
+	}
+	return 0;
 }
 int append_number(t_stack *stack, char *arg, int *value)
 {
@@ -95,14 +105,14 @@ int parse_integer(char *arg, int *value)
 	{
 		return 0;
 	}
-	
+
 	if (arg[i] == '-' || arg[i] == '+')
 	{
-		if (!(arg[i+1] >= '0' && arg[i+1] <= '9'))
+		if (!(arg[i + 1] >= '0' && arg[i + 1] <= '9'))
 		{
 			return 0;
 		}
-		
+
 		i++;
 	}
 	while (arg[i])
