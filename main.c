@@ -6,7 +6,7 @@
 /*   By: moslaoui <moslaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/14 10:02:21 by moslaoui          #+#    #+#             */
-/*   Updated: 2026/11/14 15:17:31 by moslaoui         ###   ########.fr       */
+/*   Updated: 2026/11/19 18:55:04 by moslaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 int	main(int ac, char **av)
 {
 	size_t		i;
+	size_t		nb_count;
 	t_stack		*a;
 	t_stack		*b;
 	t_node		*num;
 	
+	nb_count = 0;
 	if (ac >= 2)
 	{
 		a = new_stack();
@@ -28,12 +30,9 @@ int	main(int ac, char **av)
 		{
 			num = new_node(ft_atoi(av[i]));
 			add_node_front(a, num);
-			if (i % 2 == 0)
-			{
-				push(b, a);
-				ft_printf("%s\n", "pb");
-			}
+			nb_count++;
 			i++;
 		}
+		chunk_sort(a, b, nb_count);
 	}
 }

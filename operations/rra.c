@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rev_rotation.c                                     :+:      :+:    :+:   */
+/*   rra.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moslaoui <moslaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:35:55 by moslaoui          #+#    #+#             */
-/*   Updated: 2026/11/14 10:37:20 by moslaoui         ###   ########.fr       */
+/*   Updated: 2026/11/19 18:33:04 by moslaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	rra(t_stack *A)
 	int		tmp;
 
 	if (!A || !A->top || !A->top->next)
-		return ;
+		return (0);
 	node_content = A->top->content;
 	node = A->top->next;
 	while (node->next)
@@ -30,5 +30,7 @@ int	rra(t_stack *A)
 		node = node->next;
 	}
 	A->top->content = node_content;
+	A->op_count[RR_A]++;
+	A->op_count[TOTAL_OP]++;
 	return (RR_A);
 }

@@ -6,7 +6,7 @@
 /*   By: moslaoui <moslaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 13:31:23 by moslaoui          #+#    #+#             */
-/*   Updated: 2026/11/14 17:23:04 by moslaoui         ###   ########.fr       */
+/*   Updated: 2026/11/19 18:44:14 by moslaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,23 +28,32 @@ typedef struct s_node
 typedef struct s_stack
 {
 	t_node	*top;
+	size_t		op_count[12];
 	size_t		size;
 }	t_stack;
 
 typedef enum operations
 {
-	P_A = 1
-	P_B
-	S_A
-	S_B
-	S_S
-	R_A
-	R_B
-	R_R
-	RR_A
-	RR_B
-	RR_R
-}	def_stack;
+	OP_ERROR = -1,
+	P_A,
+	P_B,
+	S_A,
+	S_B,
+	S_S,
+	R_A,
+	R_B,
+	R_R,
+	RR_A,
+	RR_B,
+	RR_R,
+	TOTAL_OP,
+	SP_ALGO,
+	SD_ALGO,
+	CP_ALGO,
+	AD_ALGO
+}	t_operations;
+
+//algotithm and sorting functions
 
 //error handling functing
 int	ft_atoi(const char *nptr);
@@ -59,15 +68,23 @@ int	ft_print_point(void *p);
 int	ft_print_sign(void);
 int	ft_print_string(char *str);
 int	ft_print_digit(int nb);
+int	ft_print_float(double nbr, int rep);
 int	ft_print_uns_digit(unsigned int nb);
 int	ft_printf(const char *format, ...);
 
 //operations functions
-void    push(t_stack *dst, t_stack *src);
-void	swap(t_stack *stack);
-void	rotation(t_stack *stack);
-void	rev_rotation(t_stack *stack);
-char	*op_selector(int select);
+int	op_selector(t_operations select);
+int	pa(t_stack *A, t_stack *B);
+int	pb(t_stack *B, t_stack *A);
+int	sa(t_stack *A);
+int	sb(t_stack *B);
+int	ss(t_stack *A, t_stack *B);
+int	ra(t_stack *A);
+int	rb(t_stack *B);
+int	rr(t_stack *A, t_stack *B);
+int	rra(t_stack *A);
+int	rrb(t_stack *B);
+int	rrr(t_stack *A, t_stack *B);
 
 //stack & nodes functions
 t_stack	*new_stack(void);

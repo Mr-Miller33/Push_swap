@@ -6,7 +6,7 @@ int	rb(t_stack *B)
 	int	node1_content;
 	
 	if (!B || !B->top || !B->top->next)
-		return ;
+		return (0);
 	node1_content = B->top->content;
 	node = B->top;
 	while (node->next)
@@ -15,5 +15,7 @@ int	rb(t_stack *B)
 		node = node->next;
 	}
 	node->content = node1_content;
+	A->op_count[R_B]++;
+	A->op_count[TOTAL_OP]++;
 	return (R_B);
 }
