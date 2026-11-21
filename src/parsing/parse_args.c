@@ -16,12 +16,14 @@ t_stack *parse_to_stack(int argc, char **argv, t_options *options)
 	stack = create_stack();
 	if (!stack)
 		return NULL;
-	select_flags(argv, &i, options);
+	options->bench = 0;
+	options->strategy = ADAPTIVE;
+
+	select_flags(argv, argc, &i, options);
 	while (i < argc)
 	{
 		j = 0;
 		len = 0;
-		select_flags(argv, &i, options);
 
 		while (argv[i][j])
 		{
@@ -40,13 +42,16 @@ t_stack *parse_to_stack(int argc, char **argv, t_options *options)
 	}
 	return stack;
 }
-void select_flags(char **argv, int *i, t_options *options)
+void select_flags(char **argv, int argc, int *i, t_options *options)
 {
 	if (ft_strcmp(argv[1], "--simple") == 0)
 	{
-		(*i)++;
+		if (*i < argc)
+		{
+			(*i)++;
+		}
 		options->strategy = SIMPLE;
-		if (ft_strcmp(argv[2], "--bench") == 0)
+		if (*i < argc && ft_strcmp(argv[2], "--bench") == 0)
 		{
 			(*i)++;
 			options->bench = 1;
@@ -54,9 +59,12 @@ void select_flags(char **argv, int *i, t_options *options)
 	}
 	else if (ft_strcmp(argv[1], "--medium") == 0)
 	{
-		(*i)++;
+		if (*i < argc)
+		{
+			(*i)++;
+		}
 		options->strategy = MEDIUM;
-		if (ft_strcmp(argv[2], "--bench") == 0)
+		if (*i < argc && ft_strcmp(argv[2], "--bench") == 0)
 		{
 			(*i)++;
 			options->bench = 1;
@@ -64,19 +72,25 @@ void select_flags(char **argv, int *i, t_options *options)
 	}
 	else if (ft_strcmp(argv[1], "--complex") == 0)
 	{
-		(*i)++;
+		if (*i < argc)
+		{
+			(*i)++;
+		}
 		options->strategy = COMPLEX;
-		if (ft_strcmp(argv[2], "--bench") == 0)
+		if (*i < argc && ft_strcmp(argv[2], "--bench") == 0)
 		{
 			(*i)++;
 			options->bench = 1;
 		}
 	}
-	else if (ft_strcmp(argv[1], "--standard") == 0)
+	else if (ft_strcmp(argv[1], "--adaptive") == 0)
 	{
-		(*i)++;
+		if (*i < argc)
+		{
+			(*i)++;
+		}
 		options->strategy = ADAPTIVE;
-		if (ft_strcmp(argv[2], "--bench") == 0)
+		if (*i < argc && ft_strcmp(argv[2], "--bench") == 0)
 		{
 			(*i)++;
 			options->bench = 1;
@@ -84,24 +98,27 @@ void select_flags(char **argv, int *i, t_options *options)
 	}
 	else if (ft_strcmp(argv[1], "--bench") == 0)
 	{
-		(*i)++;
+		if (*i < argc)
+		{
+			(*i)++;
+		}
 		options->bench = 1;
-		if(ft_strcmp(argv[2], "--simple") == 0)
+		if (*i < argc && ft_strcmp(argv[2], "--simple") == 0)
 		{
 			(*i)++;
 			options->strategy = SIMPLE;
 		}
-		else if (ft_strcmp(argv[2], "--medium") == 0)
+		else if (*i < argc && ft_strcmp(argv[2], "--medium") == 0)
 		{
 			(*i)++;
 			options->strategy = MEDIUM;
 		}
-		else if (ft_strcmp(argv[2], "--complex") == 0)
+		else if (*i < argc && ft_strcmp(argv[2], "--complex") == 0)
 		{
 			(*i)++;
 			options->strategy = COMPLEX;
 		}
-		else if (ft_strcmp(argv[2], "--standard") == 0)
+		else if (*i < argc && ft_strcmp(argv[2], "--adaptive") == 0)
 		{
 			(*i)++;
 			options->strategy = ADAPTIVE;

@@ -71,7 +71,7 @@ int parse_tokens(char *p, t_stack *stack, int *val);
 int append_number(t_stack *stack, char *arg, int *value);
 int parse_integer(char *arg, int *value);
 int has_duplicate(t_stack *stack,int value);
-void select_flags(char **argv, int *i, t_options *options);
+void select_flags(char **argv,int argc, int *i, t_options *options);
 
 //helpers
 long long	ft_atoi(const char *nptr);

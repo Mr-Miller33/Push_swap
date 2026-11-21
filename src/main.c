@@ -6,8 +6,6 @@ int main(int argc, char **argv)
 	t_stack *stack;
 	t_options options;
 
-	options.bench = 0;
-	options.strategy = ADAPTIVE;
 	stack = parse_to_stack(argc, argv, &options);
 	if (!stack)
 	{
