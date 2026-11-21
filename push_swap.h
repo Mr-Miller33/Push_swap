@@ -2,8 +2,22 @@
 #define PUSH_SWAP_H
 
 #include <stdlib.h>
+#include <unistd.h>
 #include <limits.h>
+#include <stdarg.h>
 
+typedef enum e_strategy
+{
+    ADAPTIVE,
+    SIMPLE,
+    MEDIUM,
+    COMPLEX
+}   t_strategy;
+typedef struct s_options
+{
+	t_strategy strategy;
+	int bench;
+}	t_options;
 typedef struct s_node
 {
 	int value;
@@ -27,6 +41,16 @@ void print_stack(t_stack *st);
 t_node *stack_last(t_stack *stack);
 t_node *bfr_last(t_stack *stack);
 
+//ft_printf functions
+int	ft_print_char(char c);
+int	ft_print_hexa(unsigned long hex, char conversion);
+int	ft_print_point(void *p);
+int	ft_print_sign(void);
+int	ft_print_string(char *str);
+int	ft_print_digit(int nb);
+int	ft_print_uns_digit(unsigned int nb);
+int	ft_printf(const char *format, ...);
+
 //operations
 void sa(t_stack *a);
 void sb(t_stack *b);
@@ -41,18 +65,20 @@ void rrb(t_stack *b);
 void rrr(t_stack *a, t_stack *b);
 
 //parsing
-t_stack *parse_to_stack(int argc, char **argv);
+t_stack *parse_to_stack(int argc, char **argv, t_options *options);
 int parse_argument(char *arg, t_stack *stack, int *val);
 int parse_tokens(char *p, t_stack *stack, int *val);
 int append_number(t_stack *stack, char *arg, int *value);
 int parse_integer(char *arg, int *value);
 int has_duplicate(t_stack *stack,int value);
+void select_flags(char **argv, int *i, t_options *options);
 
 //helpers
 long long	ft_atoi(const char *nptr);
 char	**ft_split(char const *s, char sep);
 char	**ft_free(char **p, size_t i);
 size_t	ft_count_words(char const *s, char sep);
+int	ft_strcmp(const char *s1, const char *s2);
 
 //disorder
 float disorder(t_stack *stack);

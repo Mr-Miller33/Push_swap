@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "push_swap.h"
 
 
@@ -119,20 +118,20 @@ t_node *bfr_last(t_stack *stack)
 void print_stack(t_stack *st)
 {
 	t_node *tmp;
-
+	ft_printf("--------------------------------------------------------------------------\n");
 	if (st->size == 0)
 	{
-		printf("empty stack !");
+		ft_printf("empty stack !");
 		return ;
 	}
 	
 	tmp = st->top;
 	while (tmp)
 	{
-		printf("%d\n",tmp->value);
+		ft_printf("%d\n",tmp->value);
 		tmp = tmp->next;
 	}
-	printf("NULL");
+	ft_printf("NULL");
 	
 }
 //int main()
