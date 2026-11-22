@@ -33,11 +33,7 @@ typedef enum operations
 	RR_A,
 	RR_B,
 	RR_R,
-	TOTAL_OP,
-	SP_ALGO,
-	SD_ALGO,
-	CP_ALGO,
-	AD_ALGO
+	TOTAL_OP
 }	t_operations;
 
 typedef enum e_strategy
@@ -73,6 +69,7 @@ int		ft_print_point(void *p);
 int		ft_print_sign(void);
 int		ft_print_string(char *str);
 int		ft_print_digit(int nb);
+int		ft_print_float(double nbr, int rep);
 int		ft_print_uns_digit(unsigned int nb);
 int		ft_printf(const char *format, ...);
 
@@ -114,7 +111,7 @@ char	*algo_selecter(int selection);
 void	selection_sort(t_stack *stack);
 
 /* BENCH */
-void	bench_display(t_stack *a);
+void	bench_display(t_stack *a, t_options *opt);
 
 
 #endif

@@ -48,6 +48,7 @@ SRCS = main.c \
 		ft_printf/ft_print_string.c \
 		ft_printf/ft_print_uns_digit.c \
 		ft_printf/ft_printf.c \
+		ft_printf/ft_print_float.c \
 		Benchmark/bench_display.c
 
 OBJS = $(SRCS:.c=.o)

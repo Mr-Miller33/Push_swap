@@ -14,13 +14,13 @@
 
 char	*algo_selecter(int selection)
 {
-	if (selection == SP_ALGO)
+	if (selection == SIMPLE)
 		return ("Simple / O(n^2)");
-	if (selection == SD_ALGO)
+	if (selection == MEDIUM)
 		return ("Medium / O(n√n)");
-	if (selection == CP_ALGO)
+	if (selection == COMPLEX)
 		return ("Complex / O(nlogn)");
-	if (selection == AD_ALGO)
+	if (selection == ADAPTIVE)
 		return ("Adaptive");
 	return ("Adaptive");
 }

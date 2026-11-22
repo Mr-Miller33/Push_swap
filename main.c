@@ -16,8 +16,8 @@ int main(int argc, char **argv)
 	selection_sort(stack);
 	print_stack(stack);
 	ft_printf("\nbench:%d startegy:%d\n", options.bench, options.strategy);
-	printf("\ndisorder : %.2f\n", disorder(stack)); // hhhhhhhh
-	bench_display(stack);
+	//printf("\ndisorder : %.2f\n", disorder(stack)); // hhhhhhhh
+	bench_display(stack, &options);
 	
 }
 // ./push_swap "9 3 2 6 1" 20 33 12
