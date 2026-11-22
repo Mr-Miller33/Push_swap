@@ -6,10 +6,8 @@ void	reverse_rotate_stack(t_stack *stack)
 	t_node *last;
 	t_node *before_last;
 
-	if (!stack)
-	{
+	if (!stack || stack->size < 2)
 		return ;
-	}
 	last = stack_last(stack);
 	before_last = bfr_last(stack);
 	if (!last || !before_last)

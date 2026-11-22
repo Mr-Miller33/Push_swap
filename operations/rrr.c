@@ -2,10 +2,8 @@
 
 void rrr(t_stack *a, t_stack *b)
 {
-	if (!a || !b)
-	{
+	if (!a || !b || (a->size < 2 && b->size < 2))
 		return ;
-	}
 	reverse_rotate_stack(a);
 	reverse_rotate_stack(b);
 	a->op_count[RR_R]++;

@@ -2,10 +2,8 @@
 
 void ss(t_stack *a, t_stack *b)
 {
-	if (!a || !b)
-	{
+	if (!a || !b || (a->size < 2 && b->size < 2))
 		return ;
-	}
 	swap_stack(a);
 	swap_stack(b);
 	a->op_count[S_S]++;

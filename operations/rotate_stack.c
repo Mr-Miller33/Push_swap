@@ -6,9 +6,7 @@ void	rotate_stack(t_stack *stack)
 	t_node *last;
 
 	if (!stack || stack->size < 2)
-	{
 		return ;
-	}
 	tmp = stack->top;
 	last = stack_last(stack);
 	stack->top = stack->top->next;

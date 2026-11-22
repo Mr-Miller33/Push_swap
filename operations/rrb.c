@@ -2,24 +2,9 @@
 
 void rrb(t_stack *b,t_stack *a)
 {
-	t_node *tmp;
-	t_node *last;
-	t_node *before_last;
-
-	if (!b)
-	{
+	if (!a || !b || b->size < 2)
 		return ;
-	}
-	last = stack_last(b);
-	before_last = bfr_last(b);
-	if (!last || !before_last)
-	{
-		return ;
-	}
-	tmp = b->top;
-	b->top = last;
-	before_last->next = NULL;
-	last->next = tmp;
+	reverse_rotate_stack(b);
 	a->op_count[RR_B]++;
 	a->op_count[TOTAL_OP]++;
 	ft_printf("rrb\n");
