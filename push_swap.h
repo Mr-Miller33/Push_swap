@@ -85,6 +85,10 @@ void	rr(t_stack *a, t_stack *b);
 void	rra(t_stack *a);
 void	rrb(t_stack *b, t_stack *a);
 void	rrr(t_stack *a, t_stack *b);
+void	rotate_stack(t_stack *stack);
+void	swap_stack(t_stack *stack);
+void	reverse_rotate_stack(t_stack *stack);
+
 
 /* PARSING */
 t_stack	*parse_to_stack(int argc, char **argv, t_options *options);

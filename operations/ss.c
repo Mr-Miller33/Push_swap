@@ -2,8 +2,8 @@
 
 void ss(t_stack *a, t_stack *b)
 {
-	sa(a);
-	sb(b, a);
+	swap_stack(a);
+	swap_stack(b);
 	a->op_count[S_S]++;
 	a->op_count[TOTAL_OP]++;
 	ft_printf("ss\n");

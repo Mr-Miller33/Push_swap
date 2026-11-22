@@ -28,6 +28,9 @@ SRCS = main.c \
 		operations/rra.c \
 		operations/rrb.c \
 		operations/rrr.c \
+		operations/swap_stack.c \
+		operations/rotate_stack.c \
+		operations/reverse_rotate_stack.c \
 		stack_node/add_node_back.c \
 		stack_node/add_node_front.c \
 		stack_node/bfr_last.c \
