@@ -2,6 +2,10 @@
 
 void rr(t_stack *a, t_stack *b)
 {
+	if (!a || !b)
+	{
+		return ;
+	}
 	rotate_stack(a);
 	rotate_stack(b);
 	a->op_count[R_R]++;
