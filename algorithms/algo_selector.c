@@ -1,21 +1,9 @@
-///* ************************************************************************** */
-///*                                                                            */
-///*                                                        :::      ::::::::   */
-///*   algo_selector.c                                    :+:      :+:    :+:   */
-///*                                                    +:+ +:+         +:+     */
-///*   By: moslaoui <moslaoui@student.42.fr>          +#+  +:+       +#+        */
-///*                                                +#+#+#+#+#+   +#+           */
-///*   Created: 2026/11/19 18:41:37 by moslaoui          #+#    #+#             */
-///*   Updated: 2026/11/19 18:48:58 by moslaoui         ###   ########.fr       */
-///*                                                                            */
-///* ************************************************************************** */
-
 #include "push_swap.h"
 
-char	*algo_selecter(int selection)
+void	algo_printer(int selection, t_stack *stack)
 {
 	if (selection == SIMPLE)
-		return ("Simple / O(n^2)");
+		selection_sort(stack);
 	if (selection == MEDIUM)
 		return ("Medium / O(n√n)");
 	if (selection == COMPLEX)
