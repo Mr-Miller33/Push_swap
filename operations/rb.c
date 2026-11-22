@@ -5,7 +5,7 @@ void rb(t_stack *b,t_stack *a)
 	t_node *tmp;
 	t_node *last;
 
-	if (b->size < 2)
+	if (!a || !b || b->size < 2)
 	{
 		return ;
 	}

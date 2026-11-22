@@ -5,7 +5,7 @@ void ra(t_stack *a)
 	t_node *tmp;
 	t_node *last;
 
-	if (a->size < 2)
+	if (!a || a->size < 2)
 	{
 		return ;
 	}
