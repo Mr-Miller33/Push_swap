@@ -8,6 +8,7 @@ SRCS = main.c \
 		algorithms/disorder.c \
 		algorithms/is_sorted.c \
 		algorithms/algo_selector.c \
+		algorithms/algo_printer.c \
 		algorithms/simple_sort.c \
 		parsing/append_number.c \
 		parsing/has_duplicate.c \

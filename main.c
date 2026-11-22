@@ -6,18 +6,26 @@ int main(int argc, char **argv)
 {
 	t_stack *stack;
 	t_options options;
+	float init_disorder;
 
 	stack = parse_to_stack(argc, argv, &options);
+	
 	if (!stack)
 	{
 		ft_printf("error !!!");
 		return 0;
 	}
-	selection_sort(stack);
+
+	init_disorder = disorder(stack);
+
+	algo_selector(options.strategy, stack);
+	
 	print_stack(stack);
-	ft_printf("\nbench:%d startegy:%d\n", options.bench, options.strategy);
-	//printf("\ndisorder : %.2f\n", disorder(stack)); // hhhhhhhh
-	bench_display(stack, &options);
+	if (options.bench == 1)
+	{
+		bench_display(stack, &options, init_disorder);
+	}
+	
 	
 }
-// ./push_swap "9 3 2 6 1" 20 33 12
+

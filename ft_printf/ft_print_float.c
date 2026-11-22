@@ -1,18 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_print_float.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: moslaoui <moslaoui@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/18 15:50:13 by moslaoui          #+#    #+#             */
-/*   Updated: 2026/11/22 12:02:07 by moslaoui         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	ft_print_digit(int nb);
 
 static int	print_sign(void)
 {
@@ -24,19 +11,19 @@ static int	print_dot(void)
 	return (write(1, ".", 1));
 }
 
-static int print_rest(double n, int rep)
+static int	print_rest(double n, int rep)
 {
 	int		nb;
 	int		count;
 	char	c;
-	
+
 	count = 0;
 	while (rep > 0)
 	{
 		n *= 10;
-		nb = (int)n;
+		nb = (int)(n + 0.000000001);
 		c = nb + '0';
-		if (write (1, &c, 1) == -1)
+		if (write(1, &c, 1) == -1)
 			return (-1);
 		n -= nb;
 		count++;
@@ -47,28 +34,45 @@ static int print_rest(double n, int rep)
 
 int	ft_print_float(double nbr, int rep)
 {
-	int		count;
-	int		dot;
-	int		written;
-	int		num;
+	int	count;
+	int	written;
+	int	num;
 
 	if (rep < 0)
-		return (0);
+		return (-1);
+	if (rep > 2)
+		rep = 2;
+	if (!(nbr > (double)INT_MIN && nbr < (double)INT_MAX - 1))
+		return (-1);
 	count = 0;
 	if (nbr < 0)
 	{
 		nbr = -nbr;
-		count += print_sign();
-	}
-	num = (int)nbr;
-	count = ft_print_digit((int)nbr);
-	if (rep > 0)
-	{
-		if (write(1, ".", 1) == -1)
+		written = print_sign();
+		if (written == -1)
 			return (-1);
+		count += written;
 	}
-	written = print_rest((nbr - num),rep);
+	if (rep == 2)
+		nbr += 0.005;
+	else if (rep == 1)
+		nbr += 0.05;
+	else
+		nbr += 0.5;
+	num = (int)nbr;
+	written = ft_print_digit(num);
 	if (written == -1)
 		return (-1);
-	return (count + dot + written);
+	count += written;
+	if (rep > 0)
+	{
+		written = print_dot();
+		if (written == -1)
+			return (-1);
+		count += written;
+	}
+	written = print_rest(nbr - num, rep);
+	if (written == -1)
+		return (-1);
+	return (count + written);
 }

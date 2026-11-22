@@ -1,14 +1,14 @@
 #include "push_swap.h"
 
-void	algo_printer(int selection, t_stack *stack)
+void	algo_selector(int selection, t_stack *stack)
 {
 	if (selection == SIMPLE)
 		selection_sort(stack);
 	if (selection == MEDIUM)
-		return ("Medium / O(n√n)");
+		selection_sort(stack);
 	if (selection == COMPLEX)
-		return ("Complex / O(nlogn)");
+		selection_sort(stack);
 	if (selection == ADAPTIVE)
-		return ("Adaptive");
-	return ("Adaptive");
+		selection_sort(stack);
+	selection_sort(stack);
 }

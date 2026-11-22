@@ -16,6 +16,7 @@ void print_stack(t_stack *st)
 		ft_printf("%d\n",tmp->value);
 		tmp = tmp->next;
 	}
-	ft_printf("NULL");
+	ft_printf("NULL\n");
+	ft_printf("--------------------------------------------------------------------------\n");
 	
 }

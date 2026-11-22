@@ -107,11 +107,12 @@ float	disorder(t_stack *stack);
 
 /* ALGORITHMS */
 int		is_sorted(t_stack *stack);
-char	*algo_selecter(int selection);
+void	algo_selector(int selection, t_stack *stack);
+char	*algo_printer(int selection);
 void	selection_sort(t_stack *stack);
 
 /* BENCH */
-void	bench_display(t_stack *a, t_options *opt);
+void	bench_display(t_stack *A, t_options *opt, float init_disorder);
 
 
 #endif
