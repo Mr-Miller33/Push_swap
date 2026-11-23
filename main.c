@@ -8,24 +8,29 @@ int main(int argc, char **argv)
 	t_options options;
 	float init_disorder;
 
+	if (argc == 1)
+	{
+		return 0;
+	}
+	
 	stack = parse_to_stack(argc, argv, &options);
 	
 	if (!stack)
 	{
 		ft_printf("error !!!");
-		return 0;
+		return 1;
 	}
 
 	init_disorder = disorder(stack);
 
-	algo_selector(options.strategy, stack);
-	
-	print_stack(stack);
+	//algo_selector(options.strategy, stack);
+	test_sort(stack);
+	//print_stack(stack);
 	if (options.bench == 1)
 	{
 		bench_display(stack, &options, init_disorder);
 	}
-	
+	free_stack(stack);
 	
 }
 

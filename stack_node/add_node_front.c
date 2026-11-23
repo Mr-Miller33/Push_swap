@@ -2,7 +2,6 @@
 
 void add_front(t_stack *stack, t_node *new_node)
 {
-
 	if (!stack || !new_node)
 	{
 		return ;

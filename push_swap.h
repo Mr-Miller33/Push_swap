@@ -119,4 +119,7 @@ void	selection_sort(t_stack *stack);
 void	bench_display(t_stack *A, t_options *opt, float init_disorder);
 
 
+//test sort
+void	test_sort(t_stack *a);
+
 #endif

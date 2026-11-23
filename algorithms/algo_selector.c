@@ -4,11 +4,12 @@ void	algo_selector(int selection, t_stack *stack)
 {
 	if (selection == SIMPLE)
 		selection_sort(stack);
-	if (selection == MEDIUM)
+	else if(selection == MEDIUM)
 		selection_sort(stack);
-	if (selection == COMPLEX)
+	else if(selection == COMPLEX)
 		selection_sort(stack);
-	if (selection == ADAPTIVE)
+	else if(selection == ADAPTIVE)
 		selection_sort(stack);
-	selection_sort(stack);
+	else
+		selection_sort(stack);
 }
