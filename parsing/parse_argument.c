@@ -1,27 +1,35 @@
 #include "push_swap.h"
 
-int parse_argument(char *arg, t_stack *stack, int *val)
+static int	parse_words(char **words, int count, t_stack *stack, int *val)
 {
-	int j;
-	char **p;
-	int count_wrds;
+	int	i;
 
-	count_wrds = ft_count_words(arg, ' ');
-	p = ft_split(arg, ' ');
-	if (!p)
+	i = 0;
+	while (words[i])
 	{
-		return 0;
-	}
-	j = 0;
-	while (p[j])
-	{
-		if (!parse_tokens(p[j], stack, val))
+		if (!parse_tokens(words[i], stack, val))
 		{
-			ft_free(p, count_wrds);
-			return 0;
+			ft_free(words, count);
+			return (0);
 		}
-		j++;
+		i++;
 	}
-	ft_free(p, count_wrds);
+	ft_free(words, count);
 	return (1);
+}
+
+int	parse_argument(char *arg, t_stack *stack, int *val)
+{
+	char	**words;
+	int		count;
+
+	if (!arg || !stack || !val)
+		return (0);
+	count = ft_count_words(arg, ' ');
+	if (count == 0)
+		return (0);
+	words = ft_split(arg, ' ');
+	if (!words)
+		return (0);
+	return (parse_words(words, count, stack, val));
 }

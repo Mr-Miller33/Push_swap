@@ -23,9 +23,8 @@ int main(int argc, char **argv)
 
 	init_disorder = disorder(stack);
 
-	//algo_selector(options.strategy, stack);
-	test_sort(stack);
-	//print_stack(stack);
+	algo_selector(options.strategy, stack);
+	print_stack(stack);
 	if (options.bench == 1)
 	{
 		bench_display(stack, &options, init_disorder);

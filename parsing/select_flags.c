@@ -1,85 +1,36 @@
 #include "push_swap.h"
 
-void select_flags(char **argv, int argc, int *i, t_options *options)
+static int	get_strategy(char *arg)
 {
-	if (ft_strcmp(argv[1], "--simple") == 0)
+	if (ft_strcmp(arg, "--simple") == 0)
+		return (SIMPLE);
+	if (ft_strcmp(arg, "--medium") == 0)
+		return (MEDIUM);
+	if (ft_strcmp(arg, "--complex") == 0)
+		return (COMPLEX);
+	if (ft_strcmp(arg, "--adaptive") == 0)
+		return (ADAPTIVE);
+	return (-1);
+}
+
+void	select_flags(char **argv, int argc, int *i, t_options *options)
+{
+	int	strategy;
+	int	found;
+
+	found = 0;
+	while (*i < argc)
 	{
-		if (*i < argc)
-		{
-			(*i)++;
-		}
-		options->strategy = SIMPLE;
-		if (*i < argc && ft_strcmp(argv[2], "--bench") == 0)
-		{
-			(*i)++;
+		if (ft_strcmp(argv[*i], "--bench") == 0 && !options->bench)
 			options->bench = 1;
-		}
-	}
-	else if (ft_strcmp(argv[1], "--medium") == 0)
-	{
-		if (*i < argc)
+		else
 		{
-			(*i)++;
+			strategy = get_strategy(argv[*i]);
+			if (strategy == -1 || found)
+				return ;
+			options->strategy = strategy;
+			found = 1;
 		}
-		options->strategy = MEDIUM;
-		if (*i < argc && ft_strcmp(argv[2], "--bench") == 0)
-		{
-			(*i)++;
-			options->bench = 1;
-		}
-	}
-	else if (ft_strcmp(argv[1], "--complex") == 0)
-	{
-		if (*i < argc)
-		{
-			(*i)++;
-		}
-		options->strategy = COMPLEX;
-		if (*i < argc && ft_strcmp(argv[2], "--bench") == 0)
-		{
-			(*i)++;
-			options->bench = 1;
-		}
-	}
-	else if (ft_strcmp(argv[1], "--adaptive") == 0)
-	{
-		if (*i < argc)
-		{
-			(*i)++;
-		}
-		options->strategy = ADAPTIVE;
-		if (*i < argc && ft_strcmp(argv[2], "--bench") == 0)
-		{
-			(*i)++;
-			options->bench = 1;
-		}
-	}
-	else if (ft_strcmp(argv[1], "--bench") == 0)
-	{
-		if (*i < argc)
-		{
-			(*i)++;
-		}
-		options->bench = 1;
-		if (*i < argc && ft_strcmp(argv[2], "--simple") == 0)
-		{
-			(*i)++;
-			options->strategy = SIMPLE;
-		}
-		else if (*i < argc && ft_strcmp(argv[2], "--medium") == 0)
-		{
-			(*i)++;
-			options->strategy = MEDIUM;
-		}
-		else if (*i < argc && ft_strcmp(argv[2], "--complex") == 0)
-		{
-			(*i)++;
-			options->strategy = COMPLEX;
-		}
-		else if (*i < argc && ft_strcmp(argv[2], "--adaptive") == 0)
-		{
-			(*i)++;
-			options->strategy = ADAPTIVE;
-		}
+		(*i)++;
 	}
 }

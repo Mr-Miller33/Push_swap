@@ -1,38 +1,43 @@
 #include "push_swap.h"
 
-int parse_integer(char *arg, int *value)
+static int	read_number(char *str, int sign, int *value)
 {
-	int i;
-	long long result;
+	long long	number;
+	long long	limit;
+	int			digit;
 
-	i = 0;
-	if (arg[0] == '\0')
+	number = 0;
+	limit = INT_MAX;
+	if (sign == -1)
+		limit = -(long long)INT_MIN;
+	if (!*str)
+		return (0);
+	while (*str)
 	{
-		return 0;
+		if (*str < '0' || *str > '9')
+			return (0);
+		digit = *str - '0';
+		if (number > (limit - digit) / 10)
+			return (0);
+		number = number * 10 + digit;
+		str++;
 	}
+	*value = (int)(number * sign);
+	return (1);
+}
 
-	if (arg[i] == '-' || arg[i] == '+')
-	{
-		if (!(arg[i + 1] >= '0' && arg[i + 1] <= '9'))
-		{
-			return 0;
-		}
+int	parse_integer(char *arg, int *value)
+{
+	int	sign;
 
-		i++;
-	}
-	while (arg[i])
+	if (!arg || !value || !*arg)
+		return (0);
+	sign = 1;
+	if (*arg == '-' || *arg == '+')
 	{
-		if (!(arg[i] >= '0' && arg[i] <= '9'))
-		{
-			return 0;
-		}
-		i++;
+		if (*arg == '-')
+			sign = -1;
+		arg++;
 	}
-	result = ft_atoi(arg);
-	if (!(result <= INT_MAX && result >= INT_MIN))
-	{
-		return 0;
-	}
-	*value = result;
-	return 1;
+	return (read_number(arg, sign, value));
 }
