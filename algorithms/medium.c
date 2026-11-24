@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   standart.c                                         :+:      :+:    :+:   */
+/*   medium.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moslaoui <moslaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/18 15:13:56 by moslaoui          #+#    #+#             */
-/*   Updated: 2026/11/19 18:58:20 by moslaoui         ###   ########.fr       */
+/*   Updated: 2026/11/24 18:04:27 by moslaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,63 +14,67 @@
 
 static void	assign_index(t_node *node)
 {
-	t_node	*actuel_n;
+	t_node	*current;
 	t_node	*others;
 
-	actuel_n = node;
-	while (actuel)
+	current = node;
+	while (current)
 	{
+		current->index = 0;
+		others = node;
 		while (others)
 		{
-			others = node;
-			actuel_n->index = 0;
-			if (actuel_n->content > others->content)
-				actuel_n->index++;
+			if (current->content > others->content)
+				current->index++;
 			others = others->next;
 		}
-		actuel = actuel->next;
+		current = current->next;
 	}
 }
 
-static void	push_chunks(t_stack *A, t_stack *B, size_t chunk_size)
+static void	push_chunks(t_stack *a, t_stack *b, int chunk_size, int bench)
 {
-	size_t	pushed;
+	int	pushed;
 	t_node	*node;
 
-	node = A->top;
+	node = a->top;
 	pushed = 0;
-	while (A)
+	while (node)
 	{
 		if (node->index <= pushed)
 		{
-			op_selector(pb(B, A));
-			op_selector(rb(B));
+			(pb(b, a));
+			if (b->size > 1)
+				(rb(b, a));
 			pushed++;
 		}
 		else if (node->index <= pushed + chunk_size)
 		{
-			op_selector(pb(B, A));
+			(pb(b, a));
 			pushed++;
 		}
 		else
-			op_selector(ra(A));
+			(ra(a));
 	}
 }
 
-static int	find_position(t_stack *B)
+static int	find_position(t_stack *b)
 {
 	t_node	*node;
-	int		actuel_pos;
+	int		pos;
 	int		max_pos;
-	int		max_value;
+	int		max_index;
 	
-	node = B->top;
+	node = b->top;
+	pos = 0;
+	max_pos = 0;
+	max_index = node->index;
 	while (node)
 	{
-		if (node->index > max_value)
+		if (node->index > max_index)
 		{
-			max_value = node->index;
-			max_pos = actuel_pos;
+			max_index = node->index;
+			max_pos = pos;
 		}
 		pos++;
 		node = node->next;
@@ -78,35 +82,37 @@ static int	find_position(t_stack *B)
 	return (max_pos);
 }
 
-static void	push_back(t_stack *A, t_stack *B, size_t b_size)
+static void	push_back(t_stack *a, t_stack *b, size_t b_size, int bench)
 {
 	size_t	pos;
 	t_node	*node;
 
-	node = B->top;
+	node = b->top;
 	while (node)
 	{
-		pos = find_position(B);
-		if (pos > b_size / 2)
+		pos = find_position(b);
+		if (pos <= b_size / 2)
 		{
 			while (pos-- > 0)
-				op_selector(ra(B));
+				(rb(b, a));
 		}
 		else
 		{
 			while (pos++ < b_size)
-				op_selector(rrb(B));
+				(rrb(b, a));
 		}
-		op_selector(pa(A, B));
+		(pa(a, b));
 	}
 }
 
-void	chunk_sort(t_stack *A, t_stack *B, size_t digit_nb)
+void	chunk_sort(t_stack *a, t_stack *b, size_t digit_nb, int bench)
 {	
 	size_t	chunk_size;
 
-	chunk_size = 
-	assign_index(A);
-	push_chunks(A, B, 10);
-	push_back(A, B, B->size);
+	if (digit_nb < 2)
+		return ;
+	chunk_size = ft_sqrt(digit_nb);
+	assign_index(a->top);
+	push_chunks(a, b, chunk_size, bench);
+	push_back(a, b, b->size, bench);
 }

@@ -6,14 +6,14 @@
 /*   By: moslaoui <moslaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/19 19:01:19 by moslaoui          #+#    #+#             */
-/*   Updated: 2026/11/20 10:26:49 by moslaoui         ###   ########.fr       */
+/*   Updated: 2026/11/22 18:08:05 by moslaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 int ft_sqrt(int n)
-[
+{
 	int	i;
 
 	if (n <= 0)
@@ -22,4 +22,4 @@ int ft_sqrt(int n)
 	while (i * i <= n)
 		i++;
 	return (i - 1);
-]
+}

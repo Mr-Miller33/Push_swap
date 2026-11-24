@@ -6,7 +6,7 @@
 /*   By: moslaoui <moslaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/18 15:50:13 by moslaoui          #+#    #+#             */
-/*   Updated: 2026/11/19 09:21:27 by moslaoui         ###   ########.fr       */
+/*   Updated: 2026/11/22 16:56:42 by moslaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,7 @@ int	ft_print_float(double nbr, int rep)
 	}
 	num = (int)nbr;
 	count = ft_print_digit((int)nbr);
-	if (rep > 0)
-		dot = print_dot();
+	dot = print_dot();
 	if (dot == -1)
 		return (-1);
 	written = print_rest((nbr - num),rep);

@@ -1,12 +1,13 @@
 #include "push_swap.h"
 
-int	ss(t_stack *A, t_stack *B)
+void ss(t_stack *a, t_stack *b, int bench)
 {
-	if (!A || !B)
-		return (0);
-	sa(A);
-	sb(B);
-	A->op_count[S_S]++;
-	A->op_count[TOTAL_OP]++;
-	return (S_S);
+	if (!a || !b || (a->size < 2 && b->size < 2))
+		return ;
+	swap_stack(a);
+	swap_stack(b);
+	a->op_count[S_S]++;
+	a->op_count[TOTAL_OP]++;
+	if (bench == 0)
+		ft_printf("ss\n");
 }

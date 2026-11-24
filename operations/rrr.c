@@ -1,12 +1,13 @@
 #include "push_swap.h"
 
-int	rrr(t_stack *A, t_stack *B)
+void rrr(t_stack *a, t_stack *b, int bench)
 {
-	if (!A || !B)
-		return (0);
-	rra(A);
-	rrb(B);
-	A->op_count[RR_R]++;
-	A->op_count[TOTAL_OP]++;
-	return (RR_R);
+	if (!a || !b || (a->size < 2 && b->size < 2))
+		return ;
+	reverse_rotate_stack(a);
+	reverse_rotate_stack(b);
+	a->op_count[RR_R]++;
+	a->op_count[TOTAL_OP]++;
+	if (bench == 0)
+		ft_printf("rrr\n");
 }

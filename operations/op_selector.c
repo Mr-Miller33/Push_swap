@@ -6,7 +6,7 @@
 /*   By: moslaoui <moslaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/14 16:57:42 by moslaoui          #+#    #+#             */
-/*   Updated: 2026/11/18 14:59:04 by moslaoui         ###   ########.fr       */
+/*   Updated: 2026/11/22 17:04:58 by moslaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	op_selector(t_operations select)
 {
-	if (!select)
-		return (-1);
 	if (select == P_A)
 		return (ft_printf("pa\n"));
 	else if (select == P_B)

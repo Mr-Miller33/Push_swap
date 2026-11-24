@@ -6,20 +6,21 @@
 /*   By: moslaoui <moslaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/19 18:41:37 by moslaoui          #+#    #+#             */
-/*   Updated: 2026/11/19 18:48:58 by moslaoui         ###   ########.fr       */
+/*   Updated: 2026/11/22 17:17:13 by moslaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	*algo_selecter(int selection)
+char	*algo_selecter(t_strategy selection)
 {
-	if (selection == SP_ALGO)
+	if (selection == SIMPLE)
 		return ("Simple / O(n^2)");
-	if (selection == SD_ALGO)
+	if (selection == MIDIUM)
 		return ("Medium / O(n√n)");
-	if (selection == CP_ALGO)
+	if (selection == COMPLEX)
 		return ("Complex / O(nlogn)");
-	if (selection == AD_ALGO)
+	if (selection == ADAPTIVE)
 		return ("Adaptive");
+	return ("Adative");
 }

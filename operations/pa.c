@@ -1,16 +1,17 @@
 #include "push_swap.h"
 
-int	pa(t_stack *A, t_stack *B)
+void pb(t_stack *a, t_stack *b, int bench)
 {
-	t_node *first_node;
-	
-	if (!A || !B || !B->top)
-		return (0);
-	first_node = B->top;
-	B->top = first_node->next;
-	B->size--;
-	add_node_front(A, first_node);
-	A->op_count[P_A]++;
-	A->op_count[TOTAL_OP]++;
-	return (P_A);
+	t_node *tmp;
+
+	if (!a || !b || (a->size == 0))
+		return ;
+	tmp = a->top;
+	a->top = a->top->next;
+	add_front(b,tmp);
+	a->size--;
+	a->op_count[P_B]++;
+	a->op_count[TOTAL_OP]++;
+	if (bench == 0)
+		ft_printf("pb\n");
 }

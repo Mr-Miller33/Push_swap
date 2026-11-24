@@ -6,7 +6,7 @@
 /*   By: moslaoui <moslaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 18:12:32 by moslaoui          #+#    #+#             */
-/*   Updated: 2026/11/19 09:26:03 by moslaoui         ###   ########.fr       */
+/*   Updated: 2026/11/22 12:00:33 by moslaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	type_check(va_list *args, char c)
 	else if (c == '%')
 		return (ft_print_sign());
 	else if (c == 'f')
-		return (ft_print_float(va_arg(*args, float), 2));
+		return (ft_print_float(va_arg(*args, double), 2));
 	return (-1);
 }
 
