@@ -6,7 +6,7 @@
 /*   By: moslaoui <moslaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/18 15:13:56 by moslaoui          #+#    #+#             */
-/*   Updated: 2026/11/24 18:04:27 by moslaoui         ###   ########.fr       */
+/*   Updated: 2026/11/25 12:55:52 by moslaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,18 @@ static void	push_chunks(t_stack *a, t_stack *b, int chunk_size, int bench)
 	{
 		if (node->index <= pushed)
 		{
-			(pb(b, a));
+			pb(b, a, bench);
 			if (b->size > 1)
-				(rb(b, a));
+				rb(b, a, bench);
 			pushed++;
 		}
 		else if (node->index <= pushed + chunk_size)
 		{
-			(pb(b, a));
+			pb(b, a. bench);
 			pushed++;
 		}
 		else
-			(ra(a));
+			ra(a, bench);
 	}
 }
 
@@ -94,14 +94,14 @@ static void	push_back(t_stack *a, t_stack *b, size_t b_size, int bench)
 		if (pos <= b_size / 2)
 		{
 			while (pos-- > 0)
-				(rb(b, a));
+				rb(b, a, bench);
 		}
 		else
 		{
 			while (pos++ < b_size)
-				(rrb(b, a));
+				rrb(b, a, bench);
 		}
-		(pa(a, b));
+		pa(a, b, bench);
 	}
 }
 
