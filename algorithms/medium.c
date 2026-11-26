@@ -6,7 +6,7 @@
 /*   By: moslaoui <moslaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/18 15:13:56 by moslaoui          #+#    #+#             */
-/*   Updated: 2026/11/26 10:03:35 by moslaoui         ###   ########.fr       */
+/*   Updated: 2026/11/26 11:44:11 by moslaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	assign_index(t_node *node)
 		others = node;
 		while (others)
 		{
-			if (current->content > others->content)
+			if (current->value > others->value)
 				current->index++;
 			others = others->next;
 		}
@@ -35,20 +35,18 @@ static void	assign_index(t_node *node)
 static void	push_chunks(t_stack *a, t_stack *b, int chunk_size, int bench)
 {
 	int	pushed;
-	t_node	*node;
 
-	node = a->top;
 	pushed = 0;
-	while (node)
+	while (a->size > 0)
 	{
-		if (node->index <= pushed)
+		if (a->top->index <= pushed)
 		{
 			pb(b, a, bench);
 			if (b->size > 1)
 				rb(b, a, bench);
 			pushed++;
 		}
-		else if (node->index <= pushed + chunk_size)
+		else if (a->top->index <= pushed + chunk_size)
 		{
 			pb(b, a, bench);
 			pushed++;
@@ -82,24 +80,31 @@ static int	find_position(t_stack *b)
 	return (max_pos);
 }
 
-static void	push_back(t_stack *a, t_stack *b, size_t b_size, int bench)
+static void	push_back(t_stack *a, t_stack *b, int bench)
 {
-	size_t	pos;
-	t_node	*node;
+	int	pos;
+	int	b_size;
 
-	node = b->top;
-	while (node)
+	while (b->size > 0)
 	{
+
 		pos = find_position(b);
+		b_size = b->size;
 		if (pos <= b_size / 2)
 		{
-			while (pos-- > 0)
+			while (pos > 0)
+			{
 				rb(b, a, bench);
+				pos--;
+			}
 		}
 		else
 		{
-			while (pos++ < b_size)
+			while (pos < b->size)
+			{
 				rrb(b, a, bench);
+				pos++;
+			}
 		}
 		pa(a, b, bench);
 	}
@@ -107,16 +112,17 @@ static void	push_back(t_stack *a, t_stack *b, size_t b_size, int bench)
 
 void	chunk_sort(t_stack *a, size_t digit_nb, int bench)
 {
-	size_t		chunk_size;
+	int			chunk_size;
 	t_stack		*b;
 
-	b = new_stack();
-	if (!b)
-		return ;
 	if (digit_nb < 2)
+		return ;
+	b = create_stack();
+	if (!b)
 		return ;
 	chunk_size = ft_sqrt(digit_nb);
 	assign_index(a->top);
 	push_chunks(a, b, chunk_size, bench);
-	push_back(a, b, b->size, bench);
+	push_back(a, b, bench);
+	free(b);
 }
