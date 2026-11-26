@@ -6,7 +6,7 @@
 /*   By: moslaoui <moslaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/18 15:13:56 by moslaoui          #+#    #+#             */
-/*   Updated: 2026/11/25 12:55:52 by moslaoui         ###   ########.fr       */
+/*   Updated: 2026/11/26 10:03:35 by moslaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	push_chunks(t_stack *a, t_stack *b, int chunk_size, int bench)
 		}
 		else if (node->index <= pushed + chunk_size)
 		{
-			pb(b, a. bench);
+			pb(b, a, bench);
 			pushed++;
 		}
 		else
@@ -105,10 +105,14 @@ static void	push_back(t_stack *a, t_stack *b, size_t b_size, int bench)
 	}
 }
 
-void	chunk_sort(t_stack *a, t_stack *b, size_t digit_nb, int bench)
-{	
-	size_t	chunk_size;
+void	chunk_sort(t_stack *a, size_t digit_nb, int bench)
+{
+	size_t		chunk_size;
+	t_stack		*b;
 
+	b = new_stack();
+	if (!b)
+		return ;
 	if (digit_nb < 2)
 		return ;
 	chunk_size = ft_sqrt(digit_nb);

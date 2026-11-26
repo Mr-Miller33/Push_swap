@@ -6,7 +6,7 @@
 /*   By: moslaoui <moslaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 13:31:23 by moslaoui          #+#    #+#             */
-/*   Updated: 2026/11/24 18:02:38 by moslaoui         ###   ########.fr       */
+/*   Updated: 2026/11/26 09:05:19 by moslaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,17 +90,17 @@ int	ft_printf(const char *format, ...);
 void	reverse_rotate_stack(t_stack *stack);
 void	rotate_stack(t_stack *stack);
 void	swap_stack(t_stack *stack);
-int	pa(t_stack *A, t_stack *B);
-int	pb(t_stack *B, t_stack *A);
-int	sa(t_stack *A);
-int	sb(t_stack *B, t_stack *A);
-int	ss(t_stack *A, t_stack *B);
-int	ra(t_stack *A);
-int	rb(t_stack *B, t_stack *A);
-int	rr(t_stack *A, t_stack *B);
-int	rra(t_stack *A);
-int	rrb(t_stack *B, t_stack *A);
-int	rrr(t_stack *A, t_stack *B);
+void 	pa(t_stack *a, t_stack *b, int bench);
+void 	pb(t_stack *a, t_stack *b, int bench);
+void 	sa(t_stack *a, int bench);
+void 	sb(t_stack *b,t_stack *a, int bench);
+void 	ss(t_stack *a, t_stack *b, int bench);
+void 	ra(t_stack *a, int bench);
+void 	rb(t_stack *b,t_stack *a, int bench);
+void 	rr(t_stack *a, t_stack *b, int bench);
+void 	rra(t_stack *a, int bench);
+void 	rrb(t_stack *b,t_stack *a, int bench);
+void 	rrr(t_stack *a, t_stack *b, int bench);
 
 //stack & nodes functions
 t_stack	*new_stack(void);

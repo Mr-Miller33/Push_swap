@@ -1,24 +1,17 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   pb.c                                               :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: moslaoui <moslaoui@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/13 10:45:04 by moslaoui          #+#    #+#             */
-/*   Updated: 2026/11/24 17:52:15 by moslaoui         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
 
-void ra(t_stack *a, int bench)
+void pb(t_stack *a, t_stack *b, int bench)
 {
-	if (!a || a->size < 2)
+	t_node *tmp;
+
+	if (!a || !b || (a->size == 0))
 		return ;
-	rotate_stack(a);
-	a->op_count[R_A]++;
+	tmp = a->top;
+	a->top = a->top->next;
+	add_front(b,tmp);
+	a->size--;
+	a->op_count[P_B]++;
 	a->op_count[TOTAL_OP]++;
 	if (bench == 0)
-		ft_printf("ra\n");
+		ft_printf("pb\n");
 }
