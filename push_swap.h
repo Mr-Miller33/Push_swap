@@ -9,6 +9,7 @@
 typedef struct s_node
 {
 	int				value;
+	int             index;
 	struct s_node	*next;
 }	t_node;
 
@@ -114,12 +115,15 @@ int		is_sorted(t_stack *stack);
 void	algo_selector(int selection, t_stack *stack);
 char	*algo_printer(int selection);
 void	selection_sort(t_stack *stack);
+void	complex_sort(t_stack *a);
+
 
 /* BENCH */
 void	bench_display(t_stack *A, t_options *opt, float init_disorder);
 
 
-//test sort
-void	test_sort(t_stack *a);
+
+//test
+
 
 #endif

@@ -1,46 +1,72 @@
+
 #include "push_swap.h"
 
-//under tesing
-void selection_sort(t_stack *a)
+static int	find_pos(t_stack *a)
 {
-	int pos;
-	int min_pos;
-	t_stack *b;
-	t_node *tmp_node;
-	t_node *min_node;
-	
-	if (!a || (is_sorted(a) == 1))
+	t_node	*tmp;
+	t_node	*min;
+	int		pos;
+	int		min_pos;
+
+	tmp = a->top;
+	min = tmp;
+	pos = 1;
+	min_pos = 1;
+	while (tmp)
+	{
+		if (tmp->value < min->value)
+		{
+			min = tmp;
+			min_pos = pos;
+		}
+		tmp = tmp->next;
+		pos++;
+	}
+	return (min_pos);
+}
+
+static void	bring_to_top_a(t_stack *a, int pos)
+{
+	int	steps;
+
+	if (pos - 1 <= a->size - pos + 1)
+	{
+		steps = pos - 1;
+		while (steps > 0)
+		{
+			ra(a);
+			steps--;
+		}
+	}
+	else
+	{
+		steps = a->size - pos + 1;
+		while (steps > 0)
+		{
+			rra(a);
+			steps--;
+		}
+	}
+}
+
+void	selection_sort(t_stack *a)
+{
+	t_stack	*b;
+	int		pos;
+
+	if (!a || is_sorted(a))
 		return ;
 	b = create_stack();
 	if (!b)
 		return ;
-	while (a->size != 0)
+	while (a->size > 1)
 	{
-		pos = 0;
-		min_node = a->top;
-		tmp_node = a->top;
-		while (tmp_node)
-		{
-			if (tmp_node->value < min_node->value)
-			{
-				min_node = tmp_node;
-				min_pos = pos;
-			}
-			tmp_node = tmp_node->next;
-			pos++;
-		}
-		while(a->top->value != min_node->value)
-		{
-			if (min_pos > (a->size / 2))
-				rra(a);
-			else
-				ra(a);
-		}
+		pos = find_pos(a);
+		if (pos != 1)
+			bring_to_top_a(a, pos);
 		pb(a, b);
 	}
-	while (b->size != 0)
-	{
+	while (b->size > 0)
 		pa(a, b);
-	}
 	free_stack(b);
 }
