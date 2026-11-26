@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	ft_print_hexa(unsigned long hex, char conversion)
+int	ft_print_hexa(unsigned long hex, char conversion, int fd)
 {
 	unsigned long	div;
 	int				count;
@@ -28,7 +28,7 @@ int	ft_print_hexa(unsigned long hex, char conversion)
 		div *= 16;
 	while (div > 0)
 	{
-		if (write(1, &base[hex / div], 1) == -1)
+		if (write(fd, &base[hex / div], 1) == -1)
 			return (-1);
 		hex = hex % div;
 		div /= 16;

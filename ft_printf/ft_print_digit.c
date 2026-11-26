@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static int	print_num(long n)
+static int	print_num(long n, int fd)
 {
 	long	div;
 	char	c;
@@ -25,7 +25,7 @@ static int	print_num(long n)
 	while (div > 0)
 	{
 		c = (n / div) % 10 + '0';
-		if (write(1, &c, 1) == -1)
+		if (write(fd, &c, 1) == -1)
 			return (-1);
 		div /= 10;
 		count += 1;
@@ -33,7 +33,7 @@ static int	print_num(long n)
 	return (count);
 }
 
-int	ft_print_digit(int nb)
+int	ft_print_digit(int nb, int fd)
 {
 	long	n;
 	int		count;
@@ -44,11 +44,11 @@ int	ft_print_digit(int nb)
 	if (n < 0)
 	{
 		n = -n;
-		if (write(1, "-", 1) == -1)
+		if (write(fd, "-", 1) == -1)
 			return (-1);
 		count += 1;
 	}
-	rst = print_num(n);
+	rst = print_num(n, fd);
 	if (rst == -1)
 		return (-1);
 	return (count + rst);

@@ -22,12 +22,12 @@ static size_t	ft_strlen(char *str)
 	return (i);
 }
 
-int	ft_print_string(char *str)
+int	ft_print_string(char *str, int fd)
 {
 	int	len;
 
 	if (!str)
-		return (write(1, "(null)", 6));
+		return (write(fd, "(null)", 6));
 	len = ft_strlen(str);
-	return (write(1, str, len));
+	return (write(fd, str, len));
 }

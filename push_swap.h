@@ -64,15 +64,16 @@ t_node	*stack_last(t_stack *stack);
 t_node	*bfr_last(t_stack *stack);
 
 /* FT_PRINTF FUNCTIONS */
-int		ft_print_char(char c);
-int		ft_print_hexa(unsigned long hex, char conversion);
-int		ft_print_point(void *p);
-int		ft_print_sign(void);
-int		ft_print_string(char *str);
-int		ft_print_digit(int nb);
-int		ft_print_float(double nbr, int rep);
-int		ft_print_uns_digit(unsigned int nb);
+int		ft_print_char(char c, int fd);
+int		ft_print_hexa(unsigned long hex, char conversion, int fd);
+int		ft_print_point(void *p, int fd);
+int		ft_print_sign(int fd);
+int		ft_print_string(char *str, int fd);
+int		ft_print_digit(int nb, int fd);
+int		ft_print_float(double nbr, int rep, int fd);
+int		ft_print_uns_digit(unsigned int nb, int fd);
 int		ft_printf(const char *format, ...);
+int		ft_dprintf(int fd, const char *format, ...);
 
 /* OPERATIONS */
 void	sa(t_stack *a);

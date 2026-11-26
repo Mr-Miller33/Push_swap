@@ -1,17 +1,17 @@
 
 #include "push_swap.h"
 
-static int	print_sign(void)
+static int	print_sign(int fd)
 {
-	return (write(1, "-", 1));
+	return (write(fd, "-", 1));
 }
 
-static int	print_dot(void)
+static int	print_dot(int fd)
 {
-	return (write(1, ".", 1));
+	return (write(fd, ".", 1));
 }
 
-static int	print_rest(double n, int rep)
+static int	print_rest(double n, int rep, int fd)
 {
 	int		nb;
 	int		count;
@@ -23,7 +23,7 @@ static int	print_rest(double n, int rep)
 		n *= 10;
 		nb = (int)(n + 0.000000001);
 		c = nb + '0';
-		if (write(1, &c, 1) == -1)
+		if (write(fd, &c, 1) == -1)
 			return (-1);
 		n -= nb;
 		count++;
@@ -32,7 +32,7 @@ static int	print_rest(double n, int rep)
 	return (count);
 }
 
-int	ft_print_float(double nbr, int rep)
+int	ft_print_float(double nbr, int rep, int fd)
 {
 	int	count;
 	int	written;
@@ -48,7 +48,7 @@ int	ft_print_float(double nbr, int rep)
 	if (nbr < 0)
 	{
 		nbr = -nbr;
-		written = print_sign();
+		written = print_sign(fd);
 		if (written == -1)
 			return (-1);
 		count += written;
@@ -60,18 +60,18 @@ int	ft_print_float(double nbr, int rep)
 	else
 		nbr += 0.5;
 	num = (int)nbr;
-	written = ft_print_digit(num);
+	written = ft_print_digit(num, fd);
 	if (written == -1)
 		return (-1);
 	count += written;
 	if (rep > 0)
 	{
-		written = print_dot();
+		written = print_dot(fd);
 		if (written == -1)
 			return (-1);
 		count += written;
 	}
-	written = print_rest(nbr - num, rep);
+	written = print_rest(nbr - num, rep, fd);
 	if (written == -1)
 		return (-1);
 	return (count + written);

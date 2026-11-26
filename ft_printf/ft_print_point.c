@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	ft_print_point(void *p)
+int	ft_print_point(void *p, int fd)
 {
 	unsigned long	hex;
 	int				rst;
@@ -20,13 +20,13 @@ int	ft_print_point(void *p)
 
 	hex = (unsigned long)p;
 	if (!hex)
-		return (ft_print_string("(nil)"));
+		return (ft_print_string("(nil)", fd));
 	count = 0;
-	count = ft_print_string("0x");
+	count = ft_print_string("0x", fd);
 	if (count == -1)
 		return (-1);
 	rst = count;
-	count = ft_print_hexa(hex, 'x');
+	count = ft_print_hexa(hex, 'x', fd);
 	if (count == -1)
 		return (-1);
 	rst += count;

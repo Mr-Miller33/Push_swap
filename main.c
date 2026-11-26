@@ -17,7 +17,7 @@ int main(int argc, char **argv)
 	
 	if (!stack)
 	{
-		ft_printf("error !!!");
+		write(2, "Error\n", 6);
 		return 1;
 	}
 

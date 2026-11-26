@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	ft_print_char(char c)
+int	ft_print_char(char c, int fd)
 {
-	return (write(1, &c, 1));
+	return (write(fd, &c, 1));
 }

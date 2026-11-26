@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	ft_print_uns_digit(unsigned int nb)
+int	ft_print_uns_digit(unsigned int nb, int fd)
 {
 	int				count;
 	unsigned int	div;
@@ -23,7 +23,7 @@ int	ft_print_uns_digit(unsigned int nb)
 		div *= 10;
 	while (div > 0)
 	{
-		if (ft_print_char((nb / div) % 10 + '0') == -1)
+		if (ft_print_char((nb / div) % 10 + '0', fd) == -1)
 			return (-1);
 		div /= 10;
 		count += 1;
