@@ -6,7 +6,7 @@
 /*   By: moslaoui <moslaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/18 15:13:56 by moslaoui          #+#    #+#             */
-/*   Updated: 2026/11/26 11:44:11 by moslaoui         ###   ########.fr       */
+/*   Updated: 2026/11/26 19:48:53 by moslaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	assign_index(t_node *node)
 		others = node;
 		while (others)
 		{
-			if (current->value > others->value)
+			if (current->content > others->content)
 				current->index++;
 			others = others->next;
 		}
@@ -41,14 +41,14 @@ static void	push_chunks(t_stack *a, t_stack *b, int chunk_size, int bench)
 	{
 		if (a->top->index <= pushed)
 		{
-			pb(b, a, bench);
+			pb(a, b, bench);
 			if (b->size > 1)
 				rb(b, a, bench);
 			pushed++;
 		}
 		else if (a->top->index <= pushed + chunk_size)
 		{
-			pb(b, a, bench);
+			pb(a, b, bench);
 			pushed++;
 		}
 		else
@@ -120,7 +120,7 @@ void	chunk_sort(t_stack *a, size_t digit_nb, int bench)
 	b = create_stack();
 	if (!b)
 		return ;
-	chunk_size = ft_sqrt(digit_nb);
+	chunk_size = (ft_sqrt(digit_nb) * 14) / 10;
 	assign_index(a->top);
 	push_chunks(a, b, chunk_size, bench);
 	push_back(a, b, bench);

@@ -37,6 +37,8 @@ SRC = ft_printf/ft_print_char.c \
 	algorithms/medium.c \
 	algorithms/complex.c \
 	algorithms/algo_selector.c \
+	algorithms/disorder.c \
+	algorithms/algo_printer.c \
 	error_handling/ft_atoi.c \
 	error_handling/ft_isalpha.c \
 	error_handling/ft_split.c \

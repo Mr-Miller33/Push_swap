@@ -5,22 +5,37 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: moslaoui <moslaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/19 18:41:37 by moslaoui          #+#    #+#             */
-/*   Updated: 2026/11/22 17:17:13 by moslaoui         ###   ########.fr       */
+/*   Created: 2026/11/26 19:51:31 by moslaoui          #+#    #+#             */
+/*   Updated: 2026/11/26 20:00:55 by moslaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	*algo_selecter(t_strategy selection)
+void	algo_selector(int selection, t_stack *a, int bench, float disorder)
 {
 	if (selection == SIMPLE)
-		return ("Simple / O(n^2)");
-	if (selection == MIDIUM)
-		return ("Medium / O(n√n)");
-	if (selection == COMPLEX)
-		return ("Complex / O(nlogn)");
-	if (selection == ADAPTIVE)
-		return ("Adaptive");
-	return ("Adative");
+		selection_sort(a, bench);
+	else if(selection == MEDIUM)
+		chunk_sort(a, a->size, bench);
+	else if(selection == COMPLEX)
+		complex_sort(a, bench);
+	else if(selection == ADAPTIVE)
+	{
+		if (disorder < 0.2)
+			selection_sort(a, bench);
+		else if (disorder < 0.5)
+			chunk_sort(a, a->size, bench);
+		else
+			complex_sort(a, bench);
+	}
+	else
+	{
+		if (disorder < 0.2)
+			selection_sort(a, bench);
+		else if (disorder < 0.5)
+			chunk_sort(a, a->size, bench);
+		else
+			complex_sort(a, bench);
+	}
 }

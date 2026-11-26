@@ -6,7 +6,7 @@
 /*   By: moslaoui <moslaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 13:31:23 by moslaoui          #+#    #+#             */
-/*   Updated: 2026/11/26 09:05:19 by moslaoui         ###   ########.fr       */
+/*   Updated: 2026/11/26 20:44:41 by moslaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,13 @@ typedef struct s_options
 }	t_options;
 
 //algotithm and sorting functions
+int 	is_sorted(t_stack *stack);
+char	*algo_printer(int selection);
+void	algo_selector(int selection, t_stack *a, int bench);
+void 	selection_sort(t_stack *a, int bench);
 void	chunk_sort(t_stack *A, t_stack *B, size_t digit_nb);
+void	radix_sort(t_stack *a, int bench);
+float 	disorder(t_stack *stack);
 
 //error handling functing
 int	ft_atoi(const char *nptr);
