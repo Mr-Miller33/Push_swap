@@ -25,7 +25,7 @@ static int	find_pos(t_stack *a)
 	return (min_pos);
 }
 
-static void	bring_to_top_a(t_stack *a, int pos)
+static void	bring_to_top_a(t_stack *a, int pos, int bench)
 {
 	int	steps;
 
@@ -34,7 +34,7 @@ static void	bring_to_top_a(t_stack *a, int pos)
 		steps = pos - 1;
 		while (steps > 0)
 		{
-			ra(a);
+			ra(a, bench);
 			steps--;
 		}
 	}
@@ -43,13 +43,13 @@ static void	bring_to_top_a(t_stack *a, int pos)
 		steps = a->size - pos + 1;
 		while (steps > 0)
 		{
-			rra(a);
+			rra(a, bench);
 			steps--;
 		}
 	}
 }
 
-void	selection_sort(t_stack *a)
+void	selection_sort(t_stack *a, int bench)
 {
 	t_stack	*b;
 	int		pos;
@@ -63,10 +63,10 @@ void	selection_sort(t_stack *a)
 	{
 		pos = find_pos(a);
 		if (pos != 1)
-			bring_to_top_a(a, pos);
-		pb(a, b);
+			bring_to_top_a(a, pos, bench);
+		pb(a, b, bench);
 	}
 	while (b->size > 0)
-		pa(a, b);
+		pa(a, b, bench);
 	free_stack(b);
 }

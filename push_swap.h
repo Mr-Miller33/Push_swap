@@ -76,20 +76,20 @@ int		ft_printf(const char *format, ...);
 int		ft_dprintf(int fd, const char *format, ...);
 
 /* OPERATIONS */
-void	sa(t_stack *a);
-void	sb(t_stack *b, t_stack *a);
-void	ss(t_stack *a, t_stack *b);
-void	pa(t_stack *a, t_stack *b);
-void	pb(t_stack *a, t_stack *b);
-void	ra(t_stack *a);
-void	rb(t_stack *b, t_stack *a);
-void	rr(t_stack *a, t_stack *b);
-void	rra(t_stack *a);
-void	rrb(t_stack *b, t_stack *a);
-void	rrr(t_stack *a, t_stack *b);
+void	reverse_rotate_stack(t_stack *stack);
 void	rotate_stack(t_stack *stack);
 void	swap_stack(t_stack *stack);
-void	reverse_rotate_stack(t_stack *stack);
+void 	pa(t_stack *a, t_stack *b, int bench);
+void 	pb(t_stack *a, t_stack *b, int bench);
+void 	sa(t_stack *a, int bench);
+void 	sb(t_stack *b,t_stack *a, int bench);
+void 	ss(t_stack *a, t_stack *b, int bench);
+void 	ra(t_stack *a, int bench);
+void 	rb(t_stack *b,t_stack *a, int bench);
+void 	rr(t_stack *a, t_stack *b, int bench);
+void 	rra(t_stack *a, int bench);
+void 	rrb(t_stack *b,t_stack *a, int bench);
+void 	rrr(t_stack *a, t_stack *b, int bench);
 
 
 /* PARSING */
@@ -113,10 +113,11 @@ float	disorder(t_stack *stack);
 
 /* ALGORITHMS */
 int		is_sorted(t_stack *stack);
-void	algo_selector(int selection, t_stack *stack);
+void	algo_selector(int selection, t_stack *a, int bench, float disorder);
 char	*algo_printer(int selection);
-void	selection_sort(t_stack *stack);
-void	complex_sort(t_stack *a);
+void	selection_sort(t_stack *stack, int bench);
+void	chunk_sort(t_stack *A, size_t digit_nb, int bench);
+void	radix_sort(t_stack *a, int bench);
 
 
 /* BENCH */

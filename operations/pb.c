@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void pb(t_stack *a, t_stack *b)
+void pb(t_stack *a, t_stack *b, int bench)
 {
 	t_node *tmp;
 
@@ -12,5 +12,6 @@ void pb(t_stack *a, t_stack *b)
 	a->size--;
 	a->op_count[P_B]++;
 	a->op_count[TOTAL_OP]++;
-	ft_printf("pb\n");
+	if (bench == 0)
+		ft_printf("pb\n");
 }

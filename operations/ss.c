@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void ss(t_stack *a, t_stack *b)
+void ss(t_stack *a, t_stack *b, int bench)
 {
 	if (!a || !b || (a->size < 2 && b->size < 2))
 		return ;
@@ -8,5 +8,6 @@ void ss(t_stack *a, t_stack *b)
 	swap_stack(b);
 	a->op_count[S_S]++;
 	a->op_count[TOTAL_OP]++;
-	ft_printf("ss\n");
+	if (bench == 0)
+		ft_printf("ss\n");
 }

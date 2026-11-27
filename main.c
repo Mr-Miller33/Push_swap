@@ -12,9 +12,7 @@ int main(int argc, char **argv)
 	{
 		return 0;
 	}
-	
 	stack = parse_to_stack(argc, argv, &options);
-	
 	if (!stack)
 	{
 		write(2, "Error\n", 6);
@@ -23,13 +21,12 @@ int main(int argc, char **argv)
 
 	init_disorder = disorder(stack);
 
-	algo_selector(options.strategy, stack);
+	algo_selector(options.strategy, stack, options.bench, init_disorder);
 	//print_stack(stack);
 	if (options.bench == 1)
 	{
 		bench_display(stack, &options, init_disorder);
 	}
 	free_stack(stack);
-	
 }
 

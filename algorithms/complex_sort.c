@@ -23,7 +23,7 @@ static void	give_node_index(t_stack *a)
 	}
 }
 
-void	complex_sort(t_stack *a)
+void	radix_sort(t_stack *a, int bench)
 {
 	t_stack	*b;
 	int		size;
@@ -48,13 +48,13 @@ void	complex_sort(t_stack *a)
 		while (j < size)
 		{
 			if (((a->top->index >> i) & 1) == 1)
-				ra(a);
+				ra(a, bench);
 			else
-				pb(a, b);
+				pb(a, b, bench);
 			j++;
 		}
 		while (b->size > 0)
-			pa(a, b);
+			pa(a, b, bench);
 		i++;
 	}
 	free_stack(b);
