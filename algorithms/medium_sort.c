@@ -6,21 +6,11 @@
 /*   By: ael-barh <ael-barh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/18 15:13:56 by moslaoui          #+#    #+#             */
-/*   Updated: 2026/11/27 11:19:35 by ael-barh         ###   ########.fr       */
+/*   Updated: 2026/11/27 17:01:48 by ael-barh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static size_t	ft_sqrt(size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < n / (i + 1))
-		i++;
-	return (i);
-}
 
 static void	assign_index(t_node *node)
 {
@@ -97,7 +87,6 @@ static void	push_back(t_stack *a, t_stack *b, int bench)
 
 	while (b->size > 0)
 	{
-
 		pos = find_position(b);
 		b_size = b->size;
 		if (pos <= b_size / 2)
