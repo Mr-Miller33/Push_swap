@@ -1,5 +1,5 @@
 #ifndef PUSH_SWAP_H
-#define PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 #include <stdlib.h>
 #include <unistd.h>
@@ -51,17 +51,14 @@ typedef struct s_options
 	int			bench;
 }	t_options;
 
-
-
 /* STACK FUNCTIONS */
 t_stack	*create_stack();
 t_node	*create_node(int val);
+t_node	*stack_last(t_stack *stack);
+t_node	*bfr_last(t_stack *stack);
 void	add_front(t_stack *stack, t_node *new_node);
 void	add_back(t_stack *stack, t_node *new_node);
 void	free_stack(t_stack *stack);
-void	print_stack(t_stack *st);
-t_node	*stack_last(t_stack *stack);
-t_node	*bfr_last(t_stack *stack);
 
 /* FT_PRINTF FUNCTIONS */
 int		ft_print_char(char c, int fd);
@@ -91,41 +88,35 @@ void 	rra(t_stack *a, int bench);
 void 	rrb(t_stack *b,t_stack *a, int bench);
 void 	rrr(t_stack *a, t_stack *b, int bench);
 
-
 /* PARSING */
 t_stack	*parse_to_stack(int argc, char **argv, t_options *options);
+void	select_flags(char **argv, int argc, int *i, t_options *options);
 int		parse_argument(char *arg, t_stack *stack, int *val);
 int		parse_tokens(char *p, t_stack *stack, int *val);
 int		append_number(t_stack *stack, char *arg, int *value);
 int		parse_integer(char *arg, int *value);
 int		has_duplicate(t_stack *stack, int value);
-void	select_flags(char **argv, int argc, int *i, t_options *options);
 
 /* HELPERS */
 long long	ft_atoi(const char *nptr);
+size_t		ft_count_words(char const *s, char sep);
+size_t		ft_sqrt(size_t n);
 char		**ft_split(char const *s, char sep);
 char		**ft_free(char **p, size_t i);
-size_t		ft_count_words(char const *s, char sep);
 int			ft_strcmp(const char *s1, const char *s2);
 
 /* DISORDER */
 float	disorder(t_stack *stack);
 
 /* ALGORITHMS */
-int		is_sorted(t_stack *stack);
-void	algo_selector(int selection, t_stack *a, int bench, float disorder);
 char	*algo_printer(int selection);
+void	algo_selector(int selection, t_stack *a, int bench, float disorder);
 void	selection_sort(t_stack *stack, int bench);
 void	chunk_sort(t_stack *A, size_t digit_nb, int bench);
 void	radix_sort(t_stack *a, int bench);
-
+int		is_sorted(t_stack *stack);
 
 /* BENCH */
 void	bench_display(t_stack *A, t_options *opt, float init_disorder);
-
-
-
-//test
-
 
 #endif

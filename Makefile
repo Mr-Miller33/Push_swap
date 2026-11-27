@@ -36,16 +36,16 @@ SRCS = main.c \
 		stack_node/add_node_back.c \
 		stack_node/add_node_front.c \
 		stack_node/bfr_last.c \
-		stack_node/del_node.c \
+		stack_node/free_stack.c \
 		stack_node/last_node.c \
 		stack_node/new_node.c \
 		stack_node/new_stack.c \
-		stack_node/print_stack.c \
 		error_handling/ft_atoi.c \
 		error_handling/ft_count_words.c \
 		error_handling/ft_free.c \
 		error_handling/ft_split.c \
 		error_handling/ft_strcmp.c \
+		error_handling/ft_sqrt.c \
 		ft_printf/ft_print_char.c \
 		ft_printf/ft_print_digit.c \
 		ft_printf/ft_print_hexa.c \
