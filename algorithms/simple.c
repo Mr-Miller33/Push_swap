@@ -6,52 +6,74 @@
 /*   By: moslaoui <moslaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/22 11:35:35 by moslaoui          #+#    #+#             */
-/*   Updated: 2026/11/26 20:43:06 by moslaoui         ###   ########.fr       */
+/*   Updated: 2026/11/27 12:05:14 by moslaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+static void	min_indexing(t_node *node, int *min_pos)
+{
+	t_node	*min;
+	int		pos;
+
+	min = node;
+	pos = 0;
+	*min_pos = 0;
+	while (node)
+	{
+		if (node->content < min->content)
+		{
+			min = node;
+			*min_pos = pos;
+		}
+		pos++;
+		node = node->next;
+	}
+}
+
+static void min_placing(t_stack *a, int min_pos, int bench)
+{
+	int	size;
+	int	i;
+
+	size = a->size;
+	i = 0;
+	if (min_pos > size / 2)
+	{
+		while (i < size - min_pos)
+		{
+			rra(a, bench);
+			i++;
+		}
+	}
+	else
+	{
+		while (i < min_pos)
+		{
+			ra(a, bench);
+			i++;
+		}
+	}
+}
+
 void selection_sort(t_stack *a, int bench)
 {
-	int pos;
-	int min_pos;
+	int		min_pos;
 	t_stack *b;
-	t_node *tmp_node;
-	t_node *min_node;
 	
 	if (!a || (is_sorted(a) == 1))
 		return ;
-	b = create_stack();
+	b = new_stack();
 	if (!b)
 		return ;
 	while (a->size != 0)
 	{
-		pos = 0;
-		min_node = a->top;
-		tmp_node = a->top;
-		while (tmp_node)
-		{
-			if (tmp_node->value < min_node->value)
-			{
-				min_node = tmp_node;
-				min_pos = pos;
-			}
-			tmp_node = tmp_node->next;
-			pos++;
-		}
-		while(a->top->value != min_node->value)
-		{
-			if (min_pos > (a->size / 2))
-				rra(a, bench);
-			else
-				ra(a, bench);
-		}
+		min_indexing(a->top, &min_pos);
+		min_placing(a, min_pos, bench);
 		pb(a, b, bench);
 	}
 	while (b->size != 0)
-	{
 		pa(a, b, bench);
-	}
 	free(b);
 }
