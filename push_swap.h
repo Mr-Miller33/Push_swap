@@ -90,10 +90,7 @@ void 	rrr(t_stack *a, t_stack *b, int bench);
 
 /* PARSING */
 t_stack	*parse_to_stack(int argc, char **argv, t_options *options);
-void	select_flags(char **argv, int argc, int *i, t_options *options);
 int		parse_argument(char *arg, t_stack *stack, int *val);
-int		parse_tokens(char *p, t_stack *stack, int *val);
-int		append_number(t_stack *stack, char *arg, int *value);
 int		parse_integer(char *arg, int *value);
 int		has_duplicate(t_stack *stack, int value);
 

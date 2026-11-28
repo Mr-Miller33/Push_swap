@@ -12,13 +12,10 @@ SRCS = main.c \
 		algorithms/simple_sort.c \
 		algorithms/medium_sort.c \
 		algorithms/complex_sort.c \
-		parsing/append_number.c \
 		parsing/has_duplicate.c \
 		parsing/parse_argument.c \
 		parsing/parse_integer.c \
 		parsing/parse_to_stack.c \
-		parsing/parse_tokens.c \
-		parsing/select_flags.c \
 		operations/sa.c \
 		operations/sb.c \
 		operations/ss.c \
